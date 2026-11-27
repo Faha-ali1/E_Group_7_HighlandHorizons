@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Highland Horizons tour packages across Northern Pakistan including Hunza, Skardu, Fairy Meadows, Swat, Naran Kaghan, and Shogran.">
+  <title>Tour Packages | Highland Horizons</title>
+
+  <!-- Provisional Typography: Poppins with sans-serif fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Integration Slot: Link finalized shared stylesheet here when merged -->
+  <!-- <link rel="stylesheet" href="../css/shared.css"> -->
+
+  <!-- Page-specific stylesheet -->
+  <link rel="stylesheet" href="../css/tour-packages.css">
+</head>
+<body class="tp-body">
+  <!--
+    Integration Slot: Shared Header & Navbar
+    Replace or populate this container when the finalized shared header component is merged.
+  -->
+  <div id="shared-header-slot" data-shared-component="header"></div>
+
+  <main class="tp-main" id="tp-main-content">
+    <div class="tp-container">
+      <!-- Centred Page Heading (per paper prototype) -->
+      <header class="tp-page-header">
+        <h1 class="tp-page-title">Tour Packages</h1>
+      </header>
+
+      <!-- Search Bar & Horizontal Filter Dropdowns -->
+      <section class="tp-controls-section" aria-label="Search and filter tour packages">
+        <div class="tp-search-wrapper">
+          <label for="tp-search-input" class="tp-sr-only">Search tour packages</label>
+          <span class="tp-search-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input
+            type="search"
+            id="tp-search-input"
+            class="tp-search-input"
+            placeholder="Search packages..."
+            autocomplete="off"
+          >
+          <button
+            type="button"
+            id="tp-search-clear"
+            class="tp-search-clear"
+            aria-label="Clear search query"
+            hidden
+          >&times;</button>
+        </div>
+
+        <div class="tp-filters-row">
+          <div class="tp-filter-group">
+            <label for="tp-filter-destination" class="tp-filter-label">Destination</label>
+            <select id="tp-filter-destination" class="tp-filter-select">
+              <option value="all">All Destinations</option>
+            </select>
+          </div>
+
+          <div class="tp-filter-group">
+            <label for="tp-filter-budget" class="tp-filter-label">Budget</label>
+            <select id="tp-filter-budget" class="tp-filter-select">
+              <option value="all">All Budgets</option>
+              <option value="0-20000">Up to PKR 20,000</option>
+              <option value="20001-30000">PKR 20,001 &ndash; PKR 30,000</option>
+              <option value="30001+">Above PKR 30,000</option>
+            </select>
+          </div>
+
+          <div class="tp-filter-group">
+            <label for="tp-filter-duration" class="tp-filter-label">Duration</label>
+            <select id="tp-filter-duration" class="tp-filter-select">
+              <option value="all">All Durations</option>
+              <option value="1-3">1 &ndash; 3 Days</option>
+              <option value="4-5">4 &ndash; 5 Days</option>
+              <option value="6+">6+ Days</option>
+            </select>
+          </div>
+
+          <div class="tp-filter-actions">
+            <button type="button" id="tp-reset-filters" class="tp-reset-btn">
+              Reset Filters
+            </button>
+          </div>
+        </div>
+
+        <p id="tp-results-count" class="tp-results-count" aria-live="polite"></p>
+      </section>
+
+      <!-- Comparison Selection Tray (Desktop & Mobile accessible) -->
+      <section id="tp-compare-bar" class="tp-compare-bar" aria-label="Package comparison controls">
+        <div class="tp-compare-info">
+          <div class="tp-compare-heading-row">
+            <h2 class="tp-compare-title">Compare Packages</h2>
+            <span id="tp-compare-counter" class="tp-compare-counter">0 / 2 selected</span>
+          </div>
+          <div id="tp-compare-chips" class="tp-compare-chips"></div>
+          <p id="tp-compare-message" class="tp-compare-message" role="status" aria-live="polite">
+            Select up to 2 different packages to compare side by side.
+          </p>
+        </div>
+
+        <div class="tp-compare-actions">
+          <button type="button" id="tp-clear-compare" class="tp-compare-clear-btn" hidden>
+            Clear All
+          </button>
+          <button type="button" id="tp-compare-btn" class="tp-compare-submit-btn">
+            Compare Selected
+          </button>
+        </div>
+      </section>
+
+      <!-- Vertically Stacked Package Cards (Generated Dynamically by JS) -->
+      <section class="tp-packages-section" aria-label="Tour packages list">
+        <div id="tp-packages-list" class="tp-packages-list"></div>
+
+        <div id="tp-empty-state" class="tp-empty-state" hidden>
+          <h2 class="tp-empty-title">No Matching Tour Packages</h2>
+          <p class="tp-empty-text">
+            No packages match your current search or filter selection. Try adjusting your filters or resetting them to view all packages.
+          </p>
+          <button type="button" id="tp-empty-reset" class="tp-btn tp-btn--peach">
+            Reset Filters
+          </button>
+        </div>
+
+        <noscript>
+          <div class="tp-empty-state">
+            <h2 class="tp-empty-title">JavaScript Required</h2>
+            <p class="tp-empty-text">
+              Please enable JavaScript in your browser to view, filter, and compare Highland Horizons tour packages.
+            </p>
+          </div>
+        </noscript>
+      </section>
+    </div>
+  </main>
+
+  <!--
+    Integration Slot: Shared Footer
+    Replace or populate this container when the finalized shared footer component is merged.
+  -->
+  <div id="shared-footer-slot" data-shared-component="footer"></div>
+
+  <!-- Integration Slot: Link finalized shared JavaScript here when merged -->
+  <!-- <script src="../js/shared.js" defer></script> -->
+
+  <!-- Page-specific script -->
+  <script src="../js/tour-packages.js" defer></script>
+</body>
+</html>
