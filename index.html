@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Highland Horizons — Discover Northern Pakistan</title>
+  <meta
+    name="description"
+    content="Thoughtful journeys through the mountains of Northern Pakistan. Explore Hunza, Skardu, Fairy Meadows, and Shogran with Highland Horizons."
+  >
+
+  <!-- Shared CSS dependencies matching Highland Horizons layout -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="css/faha.css">
+</head>
+<body data-hh-active-page="home">
+  <!-- Shared Header Placeholder (injected by assets/js/layout.js) -->
+  <div id="site-header"></div>
+
+  <main class="hh-home-main">
+    <!-- ================================================================
+         HERO SECTION
+         ================================================================ -->
+    <section class="hh-hero" aria-labelledby="hhHeroHeading">
+      <div class="hh-hero-sky" aria-hidden="true">
+        <svg
+          class="hh-hero-mountains"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          focusable="false"
+        >
+          <path
+            d="M0 245L140 165L265 215L430 110L595 198L760 88L935 190L1110 118L1275 186L1440 132V320H0Z"
+            fill="#A7C7E7"
+            fill-opacity="0.24"
+          />
+          <path
+            d="M0 272L190 198L355 246L545 148L710 232L895 138L1085 228L1260 162L1440 218V320H0Z"
+            fill="#3F4F3A"
+            fill-opacity="0.2"
+          />
+          <path
+            d="M0 296L220 238L415 276L635 204L835 268L1045 194L1255 256L1440 220V320H0Z"
+            fill="#1B5E3B"
+            fill-opacity="0.92"
+          />
+        </svg>
+      </div>
+
+      <div class="container hh-home-container hh-hero-content">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-8">
+            <p class="hh-hero-eyebrow mb-2">Karakoram &bull; Himalaya &bull; Hindu Kush</p>
+            <h1 id="hhHeroHeading" class="hh-hero-title">DISCOVER NORTHERN PAKISTAN</h1>
+            <p class="hh-hero-subtitle">
+              Thoughtful journeys through alpine valleys, glacial lakes, and towering peaks.
+              Plan your route by days, estimate your budget, and explore curated mountain escapes.
+            </p>
+            <div class="hh-hero-actions d-flex flex-wrap align-items-center gap-3">
+              <a href="#destinations" class="btn hh-hero-cta">EXPLORE TOURS</a>
+              <a href="#trip-planner" class="btn hh-hero-secondary">Estimate Trip Cost</a>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-4">
+            <aside class="hh-hero-highlights" aria-label="Trip highlights">
+              <div class="hh-highlight-item">
+                <span class="hh-highlight-value">4 Regions</span>
+                <span class="hh-highlight-label">Hunza, Skardu, Fairy Meadows &amp; Shogran</span>
+              </div>
+              <div class="hh-highlight-item">
+                <span class="hh-highlight-value">3–7 Days</span>
+                <span class="hh-highlight-label">Flexible mountain itineraries</span>
+              </div>
+              <div class="hh-highlight-item">
+                <span class="hh-highlight-value">Local Guides</span>
+                <span class="hh-highlight-label">Islamabad departures &amp; 4x4 support</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         QUICK FILTER & TRIP COST ESTIMATOR
+         ================================================================ -->
+    <section id="trip-planner" class="hh-planner-section" aria-labelledby="hhPlannerHeading">
+      <div class="container hh-home-container">
+        <div class="hh-section-header text-center text-md-start mb-4">
+          <p class="hh-section-eyebrow mb-1">Plan Your Expedition</p>
+          <h2 id="hhPlannerHeading" class="hh-section-title mb-2">Quick Filter &amp; Trip Cost Estimator</h2>
+          <p class="hh-section-lead mb-0">
+            Narrow down destinations by region and duration, then calculate an instant estimate in PKR.
+          </p>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+          <!-- Quick Filter Card -->
+          <div class="col-12 col-lg-5">
+            <div class="hh-panel-card h-100">
+              <div class="hh-panel-card-header">
+                <h3 class="hh-panel-title mb-1">Quick Filter</h3>
+                <p class="hh-panel-subtitle mb-0">Filter popular destinations below in real time.</p>
+              </div>
+
+              <form id="hhQuickFilterForm" class="hh-filter-form" novalidate>
+                <div class="mb-3">
+                  <label for="hhFilterDestination" class="form-label hh-form-label">Destination</label>
+                  <select id="hhFilterDestination" class="form-select hh-form-control">
+                    <option value="all" selected>All Destinations</option>
+                    <option value="hunza">Hunza</option>
+                    <option value="skardu">Skardu</option>
+                    <option value="fairy-meadows">Fairy Meadows</option>
+                    <option value="shogran">Shogran</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <label for="hhFilterMaxDays" class="form-label hh-form-label mb-0">Max Days</label>
+                    <span id="hhMaxDaysValue" class="hh-range-badge">Up to 7 days</span>
+                  </div>
+                  <input
+                    type="range"
+                    id="hhFilterMaxDays"
+                    class="form-range hh-range-input"
+                    min="3"
+                    max="10"
+                    step="1"
+                    value="7"
+                  >
+                  <div class="d-flex justify-content-between hh-range-ticks">
+                    <span>3 days</span>
+                    <span>5 days</span>
+                    <span>7 days</span>
+                    <span>10 days</span>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 pt-2">
+                  <p id="hhFilterStatus" class="hh-filter-status mb-0" aria-live="polite">
+                    Showing all 4 destinations.
+                  </p>
+                  <button type="button" id="hhFilterReset" class="btn hh-btn-outline">
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Trip Cost Estimator Card -->
+          <div class="col-12 col-lg-7">
+            <div class="hh-panel-card hh-estimator-card h-100">
+              <div class="hh-panel-card-header d-flex flex-wrap justify-content-between align-items-start gap-2">
+                <div>
+                  <h3 class="hh-panel-title mb-1">Trip Cost Estimator</h3>
+                  <p class="hh-panel-subtitle mb-0">Adjust travelers, days, and comfort tier for a live breakdown.</p>
+                </div>
+                <span class="hh-currency-pill">PKR Estimate</span>
+              </div>
+
+              <form id="hhEstimatorForm" class="hh-estimator-form" novalidate>
+                <div class="row g-3">
+                  <div class="col-12 col-sm-6">
+                    <label for="hhEstDestination" class="form-label hh-form-label">Destination</label>
+                    <select id="hhEstDestination" class="form-select hh-form-control">
+                      <option value="hunza" selected>Hunza (PKR 13,500 / day)</option>
+                      <option value="skardu">Skardu (PKR 14,500 / day)</option>
+                      <option value="fairy-meadows">Fairy Meadows (PKR 12,000 / day)</option>
+                      <option value="shogran">Shogran (PKR 10,500 / day)</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12 col-sm-6">
+                    <label for="hhEstTier" class="form-label hh-form-label">Package Tier</label>
+                    <select id="hhEstTier" class="form-select hh-form-control">
+                      <option value="standard" selected>Standard Lodge &amp; Transport</option>
+                      <option value="comfort">Comfort Boutique Stay (+25%)</option>
+                      <option value="expedition">Guided Private Expedition (+50%)</option>
+                    </select>
+                  </div>
+
+                  <div class="col-6 col-sm-4">
+                    <label for="hhEstDays" class="form-label hh-form-label">Trip Days</label>
+                    <input
+                      type="number"
+                      id="hhEstDays"
+                      class="form-control hh-form-control"
+                      min="2"
+                      max="14"
+                      value="5"
+                    >
+                  </div>
+
+                  <div class="col-6 col-sm-4">
+                    <label for="hhEstTravelers" class="form-label hh-form-label">Travelers</label>
+                    <input
+                      type="number"
+                      id="hhEstTravelers"
+                      class="form-control hh-form-control"
+                      min="1"
+                      max="12"
+                      value="2"
+                    >
+                  </div>
+
+                  <div class="col-12 col-sm-4 d-flex align-items-end">
+                    <div class="form-check hh-jeep-check mb-2">
+                      <input class="form-check-input" type="checkbox" id="hhEstJeep">
+                      <label class="form-check-label hh-check-label" for="hhEstJeep">
+                        4x4 Jeep (+PKR 6,500/day)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="hh-estimate-output mt-4">
+                  <div class="hh-estimate-breakdown">
+                    <div class="hh-estimate-line">
+                      <span>Base &amp; Stay</span>
+                      <strong id="hhEstBaseAmount">PKR 135,000</strong>
+                    </div>
+                    <div class="hh-estimate-line">
+                      <span>Add-ons &amp; Discounts</span>
+                      <strong id="hhEstAdjustmentAmount">PKR 0</strong>
+                    </div>
+                  </div>
+                  <div class="hh-estimate-total-box">
+                    <span class="hh-estimate-total-label">Estimated Total</span>
+                    <strong id="hhEstTotalAmount" class="hh-estimate-total-value">PKR 135,000</strong>
+                    <span id="hhEstPerPerson" class="hh-estimate-per-person">PKR 67,500 per traveler</span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         POPULAR DESTINATIONS
+         ================================================================ -->
+    <section id="destinations" class="hh-destinations-section" aria-labelledby="hhDestinationsHeading">
+      <div class="container hh-home-container">
+        <div class="d-flex flex-column flex-md-row align-items-start justify-content-between align-items-md-end gap-2 mb-4">
+          <div>
+            <p class="hh-section-eyebrow mb-1">Curated Northern Routes</p>
+            <h2 id="hhDestinationsHeading" class="hh-section-title mb-1">Popular Destinations</h2>
+            <p class="hh-section-lead mb-0">
+              Iconic valleys and mountain bases crafted for scenic comfort and safe altitude pacing.
+            </p>
+          </div>
+          <span id="hhDestinationsCount" class="hh-count-pill">4 Destinations</span>
+        </div>
+
+        <div id="hhDestinationsGrid" class="row g-4">
+          <!-- Card 1: Hunza -->
+          <div
+            class="col-12 col-md-6 col-xl-3 hh-dest-col"
+            data-destination="hunza"
+            data-days="5"
+            data-name="Hunza"
+          >
+            <article class="hh-dest-card h-100">
+              <div class="hh-dest-visual hh-visual-hunza" aria-hidden="true">
+                <svg viewBox="0 0 360 190" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <rect width="360" height="190" fill="#A7C7E7" fill-opacity="0.48" />
+                  <circle cx="290" cy="44" r="20" fill="#D9B382" fill-opacity="0.85" />
+                  <path d="M0 132L65 62L135 122L215 44L300 118L360 72V190H0Z" fill="#3F4F3A" />
+                  <path d="M0 152L95 102L185 148L275 94L360 142V190H0Z" fill="#1B5E3B" />
+                  <path d="M0 158C80 148 165 166 250 154C295 148 330 154 360 160V190H0Z" fill="#A7C7E7" fill-opacity="0.72" />
+                </svg>
+                <span class="hh-dest-badge">Gilgit-Baltistan</span>
+                <span class="hh-dest-days">5 Days</span>
+              </div>
+              <div class="hh-dest-body">
+                <h3 class="hh-dest-title">Hunza</h3>
+                <p class="hh-dest-desc">
+                  Terraced apricot orchards, Attabad Lake's turquoise waters, and panoramic Rakaposhi views along the Karakoram Highway.
+                </p>
+                <ul class="list-unstyled hh-dest-meta">
+                  <li><strong>Highlights:</strong> Baltit Fort, Passu Cones, Attabad</li>
+                  <li><strong>Best Season:</strong> April – October</li>
+                </ul>
+                <div class="hh-dest-footer">
+                  <div>
+                    <span class="hh-price-label">Starting from</span>
+                    <strong class="hh-price-value">PKR 67,500</strong>
+                  </div>
+                  <div class="hh-dest-actions">
+                    <button
+                      type="button"
+                      class="btn hh-btn-accent hh-select-estimate"
+                      data-dest-key="hunza"
+                      data-dest-days="5"
+                    >
+                      Estimate
+                    </button>
+                    <button
+                      type="button"
+                      class="btn hh-btn-outline hh-view-details"
+                      data-dest-key="hunza"
+                    >
+                      Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 2: Skardu -->
+          <div
+            class="col-12 col-md-6 col-xl-3 hh-dest-col"
+            data-destination="skardu"
+            data-days="7"
+            data-name="Skardu"
+          >
+            <article class="hh-dest-card h-100">
+              <div class="hh-dest-visual hh-visual-skardu" aria-hidden="true">
+                <svg viewBox="0 0 360 190" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <rect width="360" height="190" fill="#A7C7E7" fill-opacity="0.55" />
+                  <circle cx="72" cy="48" r="18" fill="#F8F6ED" fill-opacity="0.9" />
+                  <path d="M0 135L80 56L160 124L245 38L330 112L360 88V190H0Z" fill="#3F4F3A" />
+                  <path d="M198 85L245 38L285 75L260 70L245 84L226 68Z" fill="#F8F6ED" fill-opacity="0.88" />
+                  <path d="M0 154L115 114L215 152L305 110L360 144V190H0Z" fill="#1B5E3B" />
+                  <path d="M0 166C95 158 210 170 360 160V190H0Z" fill="#D9B382" fill-opacity="0.65" />
+                </svg>
+                <span class="hh-dest-badge">Baltistan</span>
+                <span class="hh-dest-days">7 Days</span>
+              </div>
+              <div class="hh-dest-body">
+                <h3 class="hh-dest-title">Skardu</h3>
+                <p class="hh-dest-desc">
+                  Gateway to high Karakoram granite spires, cold desert dunes of Katpana, and the wildflower expanse of Deosai Plains.
+                </p>
+                <ul class="list-unstyled hh-dest-meta">
+                  <li><strong>Highlights:</strong> Upper Kachura, Shigar, Deosai</li>
+                  <li><strong>Best Season:</strong> May – September</li>
+                </ul>
+                <div class="hh-dest-footer">
+                  <div>
+                    <span class="hh-price-label">Starting from</span>
+                    <strong class="hh-price-value">PKR 101,500</strong>
+                  </div>
+                  <div class="hh-dest-actions">
+                    <button
+                      type="button"
+                      class="btn hh-btn-accent hh-select-estimate"
+                      data-dest-key="skardu"
+                      data-dest-days="7"
+                    >
+                      Estimate
+                    </button>
+                    <button
+                      type="button"
+                      class="btn hh-btn-outline hh-view-details"
+                      data-dest-key="skardu"
+                    >
+                      Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 3: Fairy Meadows -->
+          <div
+            class="col-12 col-md-6 col-xl-3 hh-dest-col"
+            data-destination="fairy-meadows"
+            data-days="4"
+            data-name="Fairy Meadows"
+          >
+            <article class="hh-dest-card h-100">
+              <div class="hh-dest-visual hh-visual-fairy" aria-hidden="true">
+                <svg viewBox="0 0 360 190" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <rect width="360" height="190" fill="#A7C7E7" fill-opacity="0.42" />
+                  <path d="M0 144L105 70L185 118L265 34L360 128V190H0Z" fill="#3F4F3A" />
+                  <path d="M225 74L265 34L308 77L285 68L265 88L246 68Z" fill="#F8F6ED" fill-opacity="0.92" />
+                  <path d="M0 150C90 132 230 138 360 156V190H0Z" fill="#A7C957" fill-opacity="0.82" />
+                  <path d="M44 166L58 124L72 166ZM92 168L104 132L116 168ZM148 164L162 120L176 164Z" fill="#1B5E3B" />
+                </svg>
+                <span class="hh-dest-badge">Diamer</span>
+                <span class="hh-dest-days">4 Days</span>
+              </div>
+              <div class="hh-dest-body">
+                <h3 class="hh-dest-title">Fairy Meadows</h3>
+                <p class="hh-dest-desc">
+                  Thrilling Raikot jeep ascent and forested trail opening onto alpine cabins facing the sheer north wall of Nanga Parbat.
+                </p>
+                <ul class="list-unstyled hh-dest-meta">
+                  <li><strong>Highlights:</strong> Raikot Trail, Beyal Camp, Viewpoint</li>
+                  <li><strong>Best Season:</strong> May – September</li>
+                </ul>
+                <div class="hh-dest-footer">
+                  <div>
+                    <span class="hh-price-label">Starting from</span>
+                    <strong class="hh-price-value">PKR 48,000</strong>
+                  </div>
+                  <div class="hh-dest-actions">
+                    <button
+                      type="button"
+                      class="btn hh-btn-accent hh-select-estimate"
+                      data-dest-key="fairy-meadows"
+                      data-dest-days="4"
+                    >
+                      Estimate
+                    </button>
+                    <button
+                      type="button"
+                      class="btn hh-btn-outline hh-view-details"
+                      data-dest-key="fairy-meadows"
+                    >
+                      Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 4: Shogran -->
+          <div
+            class="col-12 col-md-6 col-xl-3 hh-dest-col"
+            data-destination="shogran"
+            data-days="3"
+            data-name="Shogran"
+          >
+            <article class="hh-dest-card h-100">
+              <div class="hh-dest-visual hh-visual-shogran" aria-hidden="true">
+                <svg viewBox="0 0 360 190" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <rect width="360" height="190" fill="#A7C7E7" fill-opacity="0.46" />
+                  <circle cx="285" cy="48" r="19" fill="#C97B3D" fill-opacity="0.82" />
+                  <path d="M0 132C75 94 145 104 220 74C285 48 325 78 360 95V190H0Z" fill="#3F4F3A" fill-opacity="0.72" />
+                  <path d="M0 150C95 118 220 124 360 144V190H0Z" fill="#A7C957" fill-opacity="0.88" />
+                  <path d="M0 168C115 148 250 156 360 166V190H0Z" fill="#1B5E3B" />
+                  <path d="M56 164L70 118L84 164ZM242 162L258 112L274 162ZM284 166L297 126L310 166Z" fill="#1B5E3B" />
+                </svg>
+                <span class="hh-dest-badge">Kaghan Valley</span>
+                <span class="hh-dest-days">3 Days</span>
+              </div>
+              <div class="hh-dest-body">
+                <h3 class="hh-dest-title">Shogran</h3>
+                <p class="hh-dest-desc">
+                  Accessible pine-scented plateau overlooking Makra Peak, paired with a ridge drive to the emerald lakes of Siri Paye.
+                </p>
+                <ul class="list-unstyled hh-dest-meta">
+                  <li><strong>Highlights:</strong> Siri Paye Meadows, Makra Ridge</li>
+                  <li><strong>Best Season:</strong> March – November</li>
+                </ul>
+                <div class="hh-dest-footer">
+                  <div>
+                    <span class="hh-price-label">Starting from</span>
+                    <strong class="hh-price-value">PKR 31,500</strong>
+                  </div>
+                  <div class="hh-dest-actions">
+                    <button
+                      type="button"
+                      class="btn hh-btn-accent hh-select-estimate"
+                      data-dest-key="shogran"
+                      data-dest-days="3"
+                    >
+                      Estimate
+                    </button>
+                    <button
+                      type="button"
+                      class="btn hh-btn-outline hh-view-details"
+                      data-dest-key="shogran"
+                    >
+                      Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Empty filter state -->
+        <div id="hhEmptyFilterState" class="hh-empty-state text-center" hidden>
+          <p class="mb-3" id="hhEmptyFilterMessage">
+            No destinations match the selected filter criteria.
+          </p>
+          <button type="button" id="hhEmptyResetBtn" class="btn hh-hero-cta">
+            Show All Destinations
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Destination Quick-View Modal -->
+  <div
+    class="modal fade"
+    id="hhDestModal"
+    tabindex="-1"
+    aria-labelledby="hhDestModalTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content hh-modal-content">
+        <div class="modal-header hh-modal-header">
+          <div>
+            <span id="hhModalRegion" class="hh-modal-region"></span>
+            <h2 class="modal-title hh-modal-title" id="hhDestModalTitle">Destination</h2>
+          </div>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close destination details"
+          ></button>
+        </div>
+        <div class="modal-body hh-modal-body">
+          <p id="hhModalSummary" class="mb-3"></p>
+          <div class="hh-modal-facts">
+            <div><strong>Recommended Duration:</strong> <span id="hhModalDays"></span></div>
+            <div><strong>Altitude:</strong> <span id="hhModalAltitude"></span></div>
+            <div><strong>Base Rate:</strong> <span id="hhModalRate"></span></div>
+          </div>
+        </div>
+        <div class="modal-footer hh-modal-footer">
+          <button type="button" class="btn hh-btn-outline" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="hhModalEstimateBtn" class="btn hh-btn-accent">
+            Estimate This Trip
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Footer Placeholder (injected by assets/js/layout.js) -->
+  <div id="site-footer"></div>
+
+  <!-- Shared JS dependencies matching Highland Horizons layout -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="js/faha.js"></script>
+</body>
+</html>

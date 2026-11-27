@@ -1,0 +1,606 @@
+/* ==========================================================================
+   Highland Horizons — Home Page Styles (index.html)
+   Author: 26I-3258
+   Uses shared tokens from assets/css/layout.css without modifying shared files.
+   ========================================================================== */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--hh-cream);
+  font-family: var(--hh-font-serif);
+  color: var(--hh-olive-green);
+}
+
+.hh-home-main {
+  flex: 1 0 auto;
+  overflow-x: hidden;
+}
+
+.hh-home-container {
+  max-width: 1320px;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.hh-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(167, 199, 231, 0.25) 0%, var(--hh-cream) 72%);
+  border-bottom: 2px solid var(--hh-forest-green);
+  padding: 4rem 0 4.75rem;
+}
+
+.hh-hero-sky {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hh-hero-mountains {
+  width: 100%;
+  height: 210px;
+  display: block;
+}
+
+.hh-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hh-hero-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hh-earthy-orange);
+}
+
+.hh-hero-title {
+  font-size: clamp(1.65rem, 4.4vw, 3.35rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: var(--hh-forest-green);
+  margin-bottom: 1rem;
+}
+
+.hh-hero-subtitle {
+  max-width: 600px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--hh-olive-green);
+  margin-bottom: 1.75rem;
+}
+
+.hh-hero-cta {
+  background-color: var(--hh-earthy-orange);
+  border: 1px solid var(--hh-earthy-orange);
+  color: var(--hh-cream);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.85rem;
+  border-radius: 7px;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.hh-hero-cta:hover,
+.hh-hero-cta:focus-visible {
+  background-color: #b46a30;
+  border-color: #b46a30;
+  color: var(--hh-cream);
+  transform: translateY(-1px);
+}
+
+.hh-hero-secondary {
+  background-color: rgba(248, 246, 237, 0.92);
+  border: 1px solid var(--hh-forest-green);
+  color: var(--hh-forest-green);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.85rem 1.4rem;
+  border-radius: 7px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.hh-hero-secondary:hover,
+.hh-hero-secondary:focus-visible {
+  background-color: var(--hh-forest-green);
+  border-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+}
+
+.hh-hero-highlights {
+  background-color: rgba(248, 246, 237, 0.94);
+  border: 1px solid rgba(27, 94, 59, 0.25);
+  border-left: 4px solid var(--hh-earthy-orange);
+  border-radius: 10px;
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 10px 26px rgba(27, 94, 59, 0.08);
+}
+
+.hh-highlight-item + .hh-highlight-item {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(27, 94, 59, 0.14);
+}
+
+.hh-highlight-value {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+}
+
+.hh-highlight-label {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--hh-olive-green);
+  margin-top: 0.15rem;
+}
+
+/* ==========================================================================
+   SHARED SECTION HEADINGS & PANELS
+   ========================================================================== */
+
+.hh-planner-section {
+  padding: 3.5rem 0 2rem;
+}
+
+.hh-destinations-section {
+  padding: 2rem 0 4.5rem;
+}
+
+.hh-section-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hh-earthy-orange);
+}
+
+.hh-section-title {
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--hh-forest-green);
+}
+
+.hh-section-lead {
+  font-size: 0.95rem;
+  color: var(--hh-olive-green);
+}
+
+.hh-panel-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(27, 94, 59, 0.22);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(27, 94, 59, 0.05);
+}
+
+.hh-estimator-card {
+  border-top: 4px solid var(--hh-forest-green);
+}
+
+.hh-panel-card-header {
+  padding-bottom: 1rem;
+  margin-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(27, 94, 59, 0.14);
+}
+
+.hh-panel-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+}
+
+.hh-panel-subtitle {
+  font-size: 0.86rem;
+  color: var(--hh-olive-green);
+}
+
+/* ==========================================================================
+   QUICK FILTER & TRIP COST ESTIMATOR CONTROLS
+   ========================================================================== */
+
+.hh-form-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--hh-forest-green);
+}
+
+.hh-form-control {
+  border: 1px solid rgba(27, 94, 59, 0.35);
+  background-color: var(--hh-cream);
+  color: var(--hh-forest-green);
+  font-family: var(--hh-font-serif);
+  font-size: 0.9rem;
+  border-radius: 6px;
+  padding: 0.55rem 0.75rem;
+}
+
+.hh-form-control:focus {
+  background-color: #ffffff;
+  border-color: var(--hh-forest-green);
+  color: var(--hh-forest-green);
+  box-shadow: 0 0 0 0.2rem rgba(27, 94, 59, 0.16);
+}
+
+.hh-range-badge {
+  background-color: rgba(167, 201, 87, 0.28);
+  color: var(--hh-forest-green);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.hh-range-input {
+  accent-color: var(--hh-forest-green);
+}
+
+.hh-range-input::-webkit-slider-thumb {
+  background-color: var(--hh-forest-green);
+}
+
+.hh-range-input::-moz-range-thumb {
+  background-color: var(--hh-forest-green);
+}
+
+.hh-range-ticks {
+  font-size: 0.75rem;
+  color: var(--hh-olive-green);
+  margin-top: 0.25rem;
+}
+
+.hh-filter-status {
+  font-size: 0.84rem;
+  color: var(--hh-olive-green);
+}
+
+.hh-currency-pill,
+.hh-count-pill {
+  display: inline-block;
+  background-color: rgba(217, 179, 130, 0.28);
+  border: 1px solid var(--hh-sand-beige);
+  color: var(--hh-forest-green);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.hh-jeep-check .form-check-input {
+  border-color: var(--hh-forest-green);
+}
+
+.hh-jeep-check .form-check-input:checked {
+  background-color: var(--hh-forest-green);
+  border-color: var(--hh-forest-green);
+}
+
+.hh-check-label {
+  font-size: 0.82rem;
+  color: var(--hh-olive-green);
+}
+
+.hh-estimate-output {
+  background-color: var(--hh-cream);
+  border: 1px solid rgba(27, 94, 59, 0.2);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.hh-estimate-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.86rem;
+}
+
+.hh-estimate-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--hh-olive-green);
+}
+
+.hh-estimate-line strong {
+  color: var(--hh-forest-green);
+}
+
+.hh-estimate-total-box {
+  padding-top: 0.75rem;
+  border-top: 1px dashed rgba(27, 94, 59, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.hh-estimate-total-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hh-earthy-orange);
+}
+
+.hh-estimate-total-value {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+  line-height: 1.2;
+}
+
+.hh-estimate-per-person {
+  font-size: 0.82rem;
+  color: var(--hh-olive-green);
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.hh-btn-accent {
+  background-color: var(--hh-earthy-orange);
+  border: 1px solid var(--hh-earthy-orange);
+  color: var(--hh-cream);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+}
+
+.hh-btn-accent:hover,
+.hh-btn-accent:focus-visible {
+  background-color: #b46a30;
+  border-color: #b46a30;
+  color: var(--hh-cream);
+}
+
+.hh-btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--hh-forest-green);
+  color: var(--hh-forest-green);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+}
+
+.hh-btn-outline:hover,
+.hh-btn-outline:focus-visible {
+  background-color: var(--hh-forest-green);
+  border-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+}
+
+/* ==========================================================================
+   POPULAR DESTINATIONS CARDS
+   ========================================================================== */
+
+.hh-dest-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid rgba(27, 94, 59, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(27, 94, 59, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hh-dest-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(27, 94, 59, 0.12);
+}
+
+.hh-dest-visual {
+  position: relative;
+  height: 170px;
+  background-color: var(--hh-cream);
+  overflow: hidden;
+}
+
+.hh-dest-visual svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hh-dest-badge,
+.hh-dest-days {
+  position: absolute;
+  top: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.hh-dest-badge {
+  left: 12px;
+  background-color: rgba(248, 246, 237, 0.94);
+  color: var(--hh-forest-green);
+}
+
+.hh-dest-days {
+  right: 12px;
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+}
+
+.hh-dest-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+.hh-dest-title {
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+  margin-bottom: 0.55rem;
+}
+
+.hh-dest-desc {
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: var(--hh-olive-green);
+  margin-bottom: 0.85rem;
+}
+
+.hh-dest-meta {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--hh-olive-green);
+  padding: 0.65rem 0;
+  margin-bottom: 1rem;
+  border-top: 1px solid rgba(27, 94, 59, 0.12);
+  border-bottom: 1px solid rgba(27, 94, 59, 0.12);
+}
+
+.hh-dest-meta strong {
+  color: var(--hh-forest-green);
+}
+
+.hh-dest-footer {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.hh-price-label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--hh-olive-green);
+}
+
+.hh-price-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+}
+
+.hh-dest-actions {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.hh-empty-state {
+  background-color: #ffffff;
+  border: 1px dashed rgba(27, 94, 59, 0.35);
+  border-radius: 10px;
+  padding: 2.25rem 1.5rem;
+  margin-top: 1.25rem;
+}
+
+/* ==========================================================================
+   MODAL
+   ========================================================================== */
+
+.hh-modal-content {
+  background-color: var(--hh-cream);
+  border: 2px solid var(--hh-forest-green);
+  border-radius: 10px;
+  color: var(--hh-olive-green);
+}
+
+.hh-modal-header {
+  border-bottom: 1px solid rgba(27, 94, 59, 0.18);
+}
+
+.hh-modal-region {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hh-earthy-orange);
+}
+
+.hh-modal-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+}
+
+.hh-modal-facts {
+  background-color: #ffffff;
+  border: 1px solid rgba(27, 94, 59, 0.18);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+}
+
+.hh-modal-facts strong {
+  color: var(--hh-forest-green);
+}
+
+.hh-modal-footer {
+  border-top: 1px solid rgba(27, 94, 59, 0.18);
+}
+
+/* ==========================================================================
+   RESPONSIVE REFINEMENTS
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  .hh-hero {
+    padding: 5.25rem 0 5.75rem;
+  }
+
+  .hh-hero-mountains {
+    height: 250px;
+  }
+
+  .hh-estimate-output {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hh-estimate-breakdown {
+    flex: 1 1 auto;
+    padding-right: 1.25rem;
+  }
+
+  .hh-estimate-total-box {
+    padding-top: 0;
+    padding-left: 1.25rem;
+    border-top: 0;
+    border-left: 1px dashed rgba(27, 94, 59, 0.28);
+    text-align: right;
+    min-width: 215px;
+  }
+}
+
+@media (min-width: 992px) {
+  .hh-hero {
+    padding: 6rem 0 6.5rem;
+  }
+
+  .hh-panel-card {
+    padding: 1.75rem;
+  }
+}
