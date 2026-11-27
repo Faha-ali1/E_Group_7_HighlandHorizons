@@ -1,0 +1,713 @@
+/* ==========================================================================
+   Highland Horizons — Shared Header & Footer Styles
+   Stack: Bootstrap 5.3 + Vanilla CSS (Libre Baskerville 400 & 700)
+   ========================================================================== */
+
+/* Load Libre Baskerville Regular (400) and Bold (700) for every page importing layout.css */
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap");
+
+:root {
+  --hh-forest-green: #1B5E3B;
+  --hh-sage-green: #A7C957;
+  --hh-cream: #F8F6ED;
+  --hh-sand-beige: #D9B382;
+  --hh-earthy-orange: #C97B3D;
+  --hh-olive-green: #3F4F3A;
+  --hh-sky-blue: #A7C7E7;
+  --hh-font-serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
+}
+
+/* Global typography baseline for shared components */
+.hh-header,
+.hh-footer {
+  font-family: var(--hh-font-serif);
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.hh-header {
+  background-color: var(--hh-cream);
+  border-bottom: 2px solid var(--hh-forest-green);
+  color: var(--hh-forest-green);
+  position: relative;
+  z-index: 1030;
+}
+
+.hh-navbar {
+  padding: 0;
+}
+
+.hh-header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 73px;
+  padding: 12px 20px;
+}
+
+/* Brand block */
+.hh-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--hh-forest-green);
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.hh-brand:hover,
+.hh-brand:focus-visible {
+  color: var(--hh-forest-green);
+}
+
+.hh-header-logo {
+  display: block;
+  height: 19px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.hh-brand-divider {
+  width: 1.5px;
+  height: 50px;
+  background-color: var(--hh-forest-green);
+  flex-shrink: 0;
+}
+
+.hh-brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hh-brand-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  color: var(--hh-forest-green);
+  text-transform: uppercase;
+}
+
+.hh-brand-tagline {
+  font-size: 9.5px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.24em;
+  color: var(--hh-forest-green);
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* Utility controls (search, desktop/tablet Sign in, hamburger) */
+.hh-header-controls {
+  gap: 22px;
+  flex-shrink: 0;
+}
+
+.hh-icon-btn {
+  background: transparent;
+  border: 0;
+  padding: 6px;
+  color: var(--hh-forest-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.hh-icon-btn:hover {
+  opacity: 0.78;
+}
+
+.hh-icon-btn:focus-visible,
+.hh-toggler:focus-visible {
+  outline: 2px solid var(--hh-forest-green);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.hh-search-icon {
+  width: 21px;
+  height: 21px;
+  display: block;
+}
+
+.hh-toggler {
+  border: 0;
+  padding: 6px;
+  color: var(--hh-forest-green);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.hh-toggler:hover {
+  opacity: 0.78;
+}
+
+.hh-hamburger-icon {
+  width: 22px;
+  height: 16px;
+  display: block;
+}
+
+/* Collapsible navigation menu (used across mobile, tablet, and desktop) */
+.hh-nav-collapse {
+  padding-top: 12px;
+  padding-bottom: 16px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(27, 94, 59, 0.18);
+  max-width: 100%;
+}
+
+.hh-nav-drawer {
+  width: 100%;
+}
+
+.hh-nav-list {
+  gap: 2px;
+}
+
+.hh-nav-link {
+  color: var(--hh-forest-green);
+  font-size: 15px;
+  font-weight: 400;
+  padding: 10px 4px;
+  min-height: 44px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: opacity 0.15s ease;
+}
+
+.hh-nav-link:hover,
+.hh-nav-link:focus-visible,
+.hh-nav-link.active {
+  color: var(--hh-forest-green);
+}
+
+.hh-nav-link.active {
+  font-weight: 700;
+}
+
+/* Hide Bootstrap's default triangle caret in favour of the Figma chevron */
+.hh-dropdown-toggle::after {
+  display: none;
+}
+
+.hh-chevron-icon {
+  width: 11px;
+  height: 8px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.hh-dropdown-toggle[aria-expanded="true"] .hh-chevron-icon {
+  transform: rotate(180deg);
+}
+
+.hh-dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(27, 94, 59, 0.2);
+  border-radius: 6px;
+  padding: 6px 0;
+  margin: 4px 0 8px;
+  box-shadow: none;
+  max-width: 100%;
+}
+
+.hh-dropdown-item {
+  color: var(--hh-forest-green);
+  font-size: 14px;
+  padding: 9px 16px;
+  white-space: normal;
+}
+
+.hh-dropdown-item:hover,
+.hh-dropdown-item:focus {
+  background-color: rgba(167, 201, 87, 0.22);
+  color: var(--hh-forest-green);
+}
+
+.hh-dropdown-item.active,
+.hh-dropdown-item:active {
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+}
+
+.hh-nav-actions {
+  margin-top: 12px;
+  padding-bottom: 6px;
+}
+
+.hh-signin-btn {
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+  border: 1px solid var(--hh-forest-green);
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 10px 22px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.hh-signin-btn:hover,
+.hh-signin-btn:focus-visible {
+  background-color: #14492d;
+  border-color: #14492d;
+  color: var(--hh-cream);
+}
+
+/* Search panel toggled by search icon */
+.hh-search-panel {
+  background-color: var(--hh-cream);
+  border-top: 1px solid rgba(27, 94, 59, 0.2);
+}
+
+.hh-search-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 20px;
+}
+
+.hh-search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hh-search-input {
+  border: 1px solid var(--hh-forest-green);
+  background-color: #ffffff;
+  color: var(--hh-forest-green);
+  font-family: var(--hh-font-serif);
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 8px 12px;
+  min-width: 0;
+}
+
+.hh-search-input:focus {
+  border-color: var(--hh-forest-green);
+  box-shadow: 0 0 0 0.2rem rgba(27, 94, 59, 0.18);
+}
+
+.hh-search-submit {
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 16px;
+  flex-shrink: 0;
+}
+
+.hh-search-submit:hover,
+.hh-search-submit:focus-visible {
+  background-color: #14492d;
+  color: var(--hh-cream);
+}
+
+.hh-search-close {
+  color: var(--hh-forest-green);
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px 10px;
+  border: 0;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.hh-search-status {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--hh-olive-green);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.hh-footer {
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+}
+
+.hh-footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 33px 24px 36px;
+}
+
+/* CSS filter makes the dark-green raster PNG inside logo.svg appear cream (#F8F6ED) */
+.hh-footer-logo {
+  display: block;
+  height: 45px;
+  width: auto;
+  filter: brightness(0) saturate(100%) invert(97%) sepia(10%) saturate(240%)
+    hue-rotate(350deg) brightness(102%) contrast(95%);
+}
+
+.hh-footer-brand {
+  color: var(--hh-cream);
+}
+
+.hh-footer-brand-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: 0.02em;
+  color: var(--hh-cream);
+  text-transform: uppercase;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+.hh-footer-description {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--hh-cream);
+}
+
+/* Mobile spacing matching footer-mobile.png (Explore & Packages side-by-side) */
+.hh-footer-brand-col {
+  margin-bottom: 56px;
+}
+
+.hh-footer-explore-col {
+  padding-right: 12px;
+  margin-bottom: 52px;
+}
+
+.hh-footer-packages-col {
+  padding-left: 12px;
+  margin-bottom: 52px;
+}
+
+.hh-footer-contact-col {
+  margin-bottom: 0;
+}
+
+.hh-footer-heading {
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--hh-cream);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--hh-sage-green);
+  min-height: 2.8em;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hh-footer-links li + li {
+  margin-top: 11px;
+}
+
+.hh-footer-links a {
+  color: var(--hh-cream);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.4;
+  transition: color 0.15s ease;
+}
+
+.hh-footer-links a:hover,
+.hh-footer-links a:focus-visible {
+  color: var(--hh-sage-green);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.hh-footer-contact-list li + li {
+  margin-top: 12px;
+}
+
+.hh-contact-emails-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.hh-contact-email-icon {
+  margin-top: 2px;
+}
+
+.hh-contact-email-list li + li {
+  margin-top: 6px;
+}
+
+.hh-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--hh-cream);
+  text-decoration: none;
+  font-size: 13.5px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+a.hh-contact-item:hover,
+a.hh-contact-item:focus-visible {
+  color: var(--hh-sage-green);
+}
+
+.hh-contact-icon {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+}
+
+.hh-footer-bottom-rule {
+  border: 0;
+  border-top: 1px solid var(--hh-sage-green);
+  opacity: 1;
+  margin: 40px 0 22px;
+}
+
+.hh-footer-copyright {
+  font-size: 13.5px;
+  color: var(--hh-cream);
+}
+
+/* ==========================================================================
+   SMALL TABLET REFINEMENTS (>= 576px and >= 768px)
+   ========================================================================== */
+
+@media (min-width: 576px) {
+  .hh-footer-explore-col {
+    padding-right: 16px;
+  }
+
+  .hh-footer-packages-col {
+    padding-left: 16px;
+  }
+
+  .hh-footer-heading {
+    font-size: 13.5px;
+    letter-spacing: 0.1em;
+    padding-bottom: 14px;
+    min-height: 0;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .hh-header-inner {
+    padding: 12px 28px;
+  }
+
+  .hh-header-controls {
+    gap: 24px;
+  }
+
+  .hh-signin-btn {
+    width: auto;
+    min-width: 104px;
+    height: 44px;
+    padding: 0 20px;
+    font-size: 15px;
+  }
+
+  .hh-nav-drawer {
+    max-width: 340px;
+    margin-left: auto;
+  }
+
+  .hh-footer-inner {
+    padding: 36px 32px;
+  }
+}
+
+/* ==========================================================================
+   DESKTOP BREAKPOINT (Bootstrap lg >= 992px, tested for 992px & 1024px)
+   ========================================================================== */
+
+@media (min-width: 992px) {
+  .hh-header-inner {
+    min-height: 98px;
+    padding: 18px 36px 18px 40px;
+  }
+
+  .hh-brand {
+    gap: 0;
+  }
+
+  .hh-header-logo {
+    height: 51px;
+  }
+
+  .hh-brand-divider {
+    height: 50px;
+    margin: 0 20px 0 22px;
+  }
+
+  .hh-brand-title {
+    font-size: 21px;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  .hh-brand-tagline {
+    font-size: 9.5px;
+    letter-spacing: 0.24em;
+    margin-top: 6px;
+  }
+
+  .hh-header-controls {
+    gap: 30px;
+  }
+
+  .hh-search-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .hh-hamburger-icon {
+    width: 24px;
+    height: 18px;
+  }
+
+  .hh-signin-btn {
+    width: auto;
+    min-width: 115px;
+    height: 50px;
+    padding: 0 24px;
+    font-size: 16px;
+  }
+
+  .hh-nav-collapse {
+    margin-top: 16px;
+    padding-top: 14px;
+    padding-bottom: 18px;
+  }
+
+  .hh-nav-drawer {
+    max-width: 360px;
+  }
+
+  .hh-nav-link {
+    font-size: 15.5px;
+    padding: 10px 6px;
+  }
+
+  .hh-nav-link:hover {
+    opacity: 0.78;
+  }
+
+  .hh-search-inner {
+    padding: 14px 40px;
+  }
+
+  .hh-search-form {
+    max-width: 560px;
+    margin-left: auto;
+  }
+
+  /* Footer 4-column desktop layout */
+  .hh-footer-inner {
+    padding: 40px 28px 36px;
+  }
+
+  .hh-footer-col {
+    margin-bottom: 0;
+  }
+
+  .hh-footer-brand-col {
+    padding-right: 20px;
+  }
+
+  .hh-footer-divided-col {
+    border-left: 1px solid var(--hh-sage-green);
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 12px;
+  }
+
+  .hh-footer-contact-col {
+    padding-right: 8px;
+  }
+
+  .hh-footer-heading {
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    min-height: 2.6em;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hh-footer-links li + li {
+    margin-top: 9px;
+  }
+
+  .hh-footer-links a {
+    font-size: 13.5px;
+  }
+
+  .hh-contact-item {
+    font-size: 12.5px;
+    gap: 8px;
+  }
+
+  .hh-footer-bottom-rule {
+    margin: 34px 0 22px;
+  }
+}
+
+/* ==========================================================================
+   WIDE LAPTOP / DESKTOP (1200px and 1440px Figma target)
+   ========================================================================== */
+
+@media (min-width: 1200px) {
+  .hh-footer-inner {
+    padding: 40px 40px 36px;
+  }
+
+  .hh-footer-brand-col {
+    padding-right: 28px;
+  }
+
+  .hh-footer-divided-col {
+    padding-left: 20px;
+    padding-right: 24px;
+  }
+
+  .hh-footer-heading {
+    font-size: 13.5px;
+    letter-spacing: 0.1em;
+    min-height: 0;
+    display: block;
+  }
+
+  .hh-footer-links a {
+    font-size: 14px;
+  }
+
+  .hh-contact-item {
+    font-size: 13.5px;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .hh-contact-item {
+    font-size: 14px;
+    gap: 12px;
+  }
+}

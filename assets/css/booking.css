@@ -1,0 +1,484 @@
+/* ==========================================================================
+   Highland Horizons — Booking Page Styles
+   Depends on Bootstrap 5.3 + assets/css/layout.css color & typography tokens
+   ========================================================================== */
+
+body.hh-booking-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--hh-cream);
+  font-family: var(--hh-font-serif);
+  color: var(--hh-olive-green);
+}
+
+main.hh-booking-main {
+  flex: 1 0 auto;
+  padding: 2.5rem 0 4rem;
+}
+
+.hh-booking-container {
+  max-width: 1200px;
+}
+
+/* Progress Steps / Breadcrumb Indicator */
+.hh-booking-steps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--hh-olive-green);
+}
+
+.hh-step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background-color: rgba(217, 179, 130, 0.22);
+  border: 1px solid rgba(27, 94, 59, 0.2);
+  color: var(--hh-olive-green);
+}
+
+.hh-step-pill.is-active {
+  background-color: var(--hh-forest-green);
+  border-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+  font-weight: 700;
+}
+
+.hh-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: rgba(248, 246, 237, 0.22);
+}
+
+.hh-step-pill:not(.is-active) .hh-step-num {
+  background-color: rgba(27, 94, 59, 0.14);
+  color: var(--hh-forest-green);
+}
+
+/* Page Header */
+.hh-booking-hero {
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(27, 94, 59, 0.2);
+}
+
+.hh-booking-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hh-earthy-orange);
+  margin-bottom: 0.45rem;
+}
+
+.hh-booking-title {
+  color: var(--hh-forest-green);
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+.hh-booking-subtitle {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--hh-olive-green);
+  max-width: 680px;
+  margin-bottom: 0;
+}
+
+/* Left Column: Package Visual Card */
+.hh-package-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(27, 94, 59, 0.22);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(27, 94, 59, 0.08);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hh-package-visual {
+  position: relative;
+  background: linear-gradient(180deg, var(--hh-sky-blue) 0%, #dcebf7 60%, var(--hh-sage-green) 100%);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 3px solid var(--hh-sand-beige);
+}
+
+.hh-package-artwork {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hh-package-badges {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.hh-badge-featured {
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+}
+
+.hh-badge-duration {
+  background-color: rgba(248, 246, 237, 0.94);
+  color: var(--hh-forest-green);
+  border: 1px solid rgba(27, 94, 59, 0.25);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.32rem 0.75rem;
+  border-radius: 999px;
+}
+
+.hh-package-body {
+  padding: 1.65rem 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.hh-package-location {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hh-earthy-orange);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.hh-package-name {
+  color: var(--hh-forest-green);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.hh-package-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.1rem;
+}
+
+.hh-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--hh-olive-green);
+  background-color: var(--hh-cream);
+  border: 1px solid rgba(217, 179, 130, 0.65);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+}
+
+.hh-meta-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--hh-forest-green);
+  flex-shrink: 0;
+}
+
+.hh-package-description {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--hh-olive-green);
+  margin-bottom: 1.25rem;
+}
+
+.hh-package-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.hh-package-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--hh-olive-green);
+}
+
+.hh-highlight-check {
+  width: 17px;
+  height: 17px;
+  color: var(--hh-forest-green);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.hh-package-price-box {
+  margin-top: auto;
+  background-color: var(--hh-cream);
+  border: 1px solid var(--hh-sand-beige);
+  border-left: 4px solid var(--hh-earthy-orange);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hh-price-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--hh-olive-green);
+  display: block;
+}
+
+.hh-price-amount {
+  color: var(--hh-forest-green);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hh-price-unit {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--hh-olive-green);
+}
+
+.hh-package-note {
+  font-size: 0.78rem;
+  color: var(--hh-olive-green);
+  margin-top: 0.85rem;
+  margin-bottom: 0;
+}
+
+/* Right Column: Booking Form Card */
+.hh-form-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(27, 94, 59, 0.22);
+  border-radius: 14px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 12px 28px rgba(27, 94, 59, 0.08);
+  height: 100%;
+}
+
+.hh-form-heading {
+  color: var(--hh-forest-green);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.hh-form-intro {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--hh-olive-green);
+  margin-bottom: 1.35rem;
+}
+
+/* Top Form Alert Banner */
+.hh-form-alert {
+  background-color: #fdf2f2;
+  border: 1px solid #d9534f;
+  border-left: 4px solid #c9302c;
+  color: #842029;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.hh-form-alert[hidden] {
+  display: none;
+}
+
+.hh-form-alert-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Form Controls */
+.hh-form-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+  margin-bottom: 0.4rem;
+}
+
+.hh-required-mark {
+  color: var(--hh-earthy-orange);
+  margin-left: 0.15rem;
+}
+
+.hh-optional-tag {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--hh-olive-green);
+  opacity: 0.85;
+}
+
+.hh-input,
+.hh-select,
+.hh-textarea {
+  font-family: var(--hh-font-serif);
+  font-size: 0.92rem;
+  color: var(--hh-olive-green);
+  background-color: var(--hh-cream);
+  border: 1px solid rgba(27, 94, 59, 0.32);
+  border-radius: 8px;
+  padding: 0.68rem 0.9rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.hh-select {
+  padding-right: 2.25rem;
+}
+
+.hh-input::placeholder,
+.hh-textarea::placeholder {
+  color: rgba(63, 79, 58, 0.58);
+}
+
+.hh-input:focus,
+.hh-select:focus,
+.hh-textarea:focus {
+  background-color: #ffffff;
+  border-color: var(--hh-forest-green);
+  color: var(--hh-olive-green);
+  box-shadow: 0 0 0 0.2rem rgba(27, 94, 59, 0.16);
+}
+
+.hh-input.is-invalid,
+.hh-select.is-invalid,
+.hh-textarea.is-invalid {
+  border-color: #c9302c;
+  background-color: #fff8f8;
+}
+
+.hh-input.is-invalid,
+.hh-textarea.is-invalid {
+  background-image: none;
+}
+
+.hh-input.is-invalid:focus,
+.hh-select.is-invalid:focus,
+.hh-textarea.is-invalid:focus {
+  border-color: #c9302c;
+  box-shadow: 0 0 0 0.2rem rgba(201, 48, 44, 0.18);
+}
+
+.hh-field-error {
+  color: #b02a37;
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+  min-height: 1.1em;
+}
+
+.hh-field-error[hidden] {
+  display: none;
+}
+
+.hh-field-hint {
+  font-size: 0.78rem;
+  color: var(--hh-olive-green);
+  opacity: 0.85;
+  margin-top: 0.3rem;
+}
+
+/* Primary CTA Button */
+.hh-cta-btn {
+  width: 100%;
+  background-color: var(--hh-earthy-orange);
+  border: 1px solid var(--hh-earthy-orange);
+  color: var(--hh-cream);
+  font-family: var(--hh-font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.5rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+  box-shadow: 0 6px 16px rgba(201, 123, 61, 0.26);
+}
+
+.hh-cta-btn:hover,
+.hh-cta-btn:focus-visible {
+  background-color: #b1682f;
+  border-color: #b1682f;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(201, 123, 61, 0.34);
+}
+
+.hh-cta-btn:active {
+  transform: translateY(1px);
+}
+
+.hh-cta-arrow {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.hh-form-security-note {
+  margin-top: 0.85rem;
+  margin-bottom: 0;
+  font-size: 0.78rem;
+  text-align: center;
+  color: var(--hh-olive-green);
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  main.hh-booking-main {
+    padding: 3rem 0 4.5rem;
+  }
+
+  .hh-package-body {
+    padding: 1.85rem;
+  }
+
+  .hh-form-card {
+    padding: 2rem 2.1rem;
+  }
+}
