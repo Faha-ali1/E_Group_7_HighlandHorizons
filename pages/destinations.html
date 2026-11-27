@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations — Highland Horizons</title>
+
+  <!-- Shared CSS dependencies (Bootstrap 5.3 before layout.css) -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/destinations.css">
+</head>
+<body data-hh-active-page="destinations">
+  <!-- Shared Header (dynamically refreshed by assets/js/layout.js over HTTP; fallback for file:// viewing) -->
+  <div id="site-header">
+    <header class="hh-header">
+      <nav class="navbar hh-navbar" aria-label="Main navigation">
+        <div class="hh-header-inner container-fluid">
+          <a
+            class="hh-brand text-decoration-none"
+            data-hh-page="home"
+            data-hh-href="#"
+            href="#"
+            title="Home (page path pending confirmation)"
+          >
+            <img
+              src="../assets/images/logo.svg"
+              data-hh-src="assets/images/logo.svg"
+              alt="Highland Horizons mountain logo"
+              class="hh-header-logo"
+            >
+            <span class="hh-brand-divider d-none d-lg-block" aria-hidden="true"></span>
+            <span class="hh-brand-text">
+              <span class="hh-brand-title">HIGHLAND <span class="d-block d-lg-inline">HORIZONS</span></span>
+              <span class="hh-brand-tagline d-none d-lg-block">FIND YOUR WAY NORTH</span>
+            </span>
+          </a>
+
+          <div class="hh-header-controls d-flex align-items-center">
+            <button
+              type="button"
+              class="hh-icon-btn hh-search-trigger"
+              aria-label="Toggle search"
+              aria-expanded="false"
+              aria-controls="hhSearchPanel"
+            >
+              <svg class="hh-search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="7.5" stroke="currentColor" stroke-width="1.8" />
+                <line x1="16.2" y1="16.2" x2="21.5" y2="21.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </button>
+
+            <a
+              class="btn hh-signin-btn d-none d-md-inline-flex"
+              data-hh-page="login-signup"
+              data-hh-href="#"
+              href="#"
+            >Sign in</a>
+
+            <button
+              class="navbar-toggler hh-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#hhMainNav"
+              aria-controls="hhMainNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation menu"
+            >
+              <svg class="hh-hamburger-icon" viewBox="0 0 24 18" fill="none" aria-hidden="true">
+                <line x1="1" y1="2" x2="23" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="1" y1="9" x2="23" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="1" y1="16" x2="23" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="collapse navbar-collapse hh-nav-collapse" id="hhMainNav">
+            <div class="hh-nav-drawer">
+              <ul class="navbar-nav hh-nav-list">
+                <li class="nav-item">
+                  <a class="nav-link hh-nav-link" data-hh-page="home" data-hh-href="#" href="#">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle active"
+                    href="#"
+                    id="hhDestinationsDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span>Destinations</span>
+                    <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                      <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                  <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhDestinationsDropdown">
+                    <li><a class="dropdown-item hh-dropdown-item active" aria-current="page" data-hh-page="destinations" data-hh-href="pages/destinations.html" href="destinations.html">Destinations</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="destination-details" data-hh-href="#" href="#">Destination Details</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="gallery" data-hh-href="#" href="#">Gallery</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="find-your-trip" data-hh-href="#" href="#">Find Your Trip</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle"
+                    href="#"
+                    id="hhPackagesDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span>Tour Packages</span>
+                    <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                      <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                  <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhPackagesDropdown">
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="tour-packages" data-hh-href="#" href="#">Tour Packages</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="package-details" data-hh-href="#" href="#">Package Details</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="compare-packages" data-hh-href="#" href="#">Compare Packages</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle"
+                    href="#"
+                    id="hhBookingDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span>Booking</span>
+                    <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                      <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                  <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhBookingDropdown">
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="booking" data-hh-href="#" href="#">Booking</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="price-calculator" data-hh-href="#" href="#">Price Calculator</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="booking-confirmation" data-hh-href="#" href="#">Booking Confirmation</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle"
+                    href="#"
+                    id="hhMoreDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span>More</span>
+                    <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                      <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                  <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhMoreDropdown">
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="about-us" data-hh-href="#" href="#">About Us</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="contact" data-hh-href="#" href="#">Contact</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="reviews-faq" data-hh-href="#" href="#">Reviews &amp; FAQ</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+              <div class="hh-nav-actions d-md-none">
+                <a class="btn hh-signin-btn" data-hh-page="login-signup" data-hh-href="#" href="#">Sign in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="hh-search-panel" id="hhSearchPanel" hidden>
+        <div class="hh-search-inner container-fluid">
+          <form class="hh-search-form" role="search" novalidate>
+            <label for="hhSearchInput" class="visually-hidden">Search Highland Horizons</label>
+            <input
+              type="search"
+              id="hhSearchInput"
+              class="form-control hh-search-input"
+              placeholder="Search destinations or tour packages..."
+              autocomplete="off"
+            >
+            <button type="submit" class="btn hh-search-submit">Search</button>
+            <button type="button" class="btn hh-search-close" aria-label="Close search">&times;</button>
+          </form>
+          <p class="hh-search-status mb-0" id="hhSearchStatus" aria-live="polite" hidden></p>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <!-- B. Hero Section -->
+    <section class="hh-hero" aria-labelledby="heroHeading">
+      <div class="container hh-hero-inner text-center">
+        <h1 id="heroHeading" class="hh-hero-title">Explore the North</h1>
+        <p class="hh-hero-subtitle">Discover breathtaking places in Northern Pakistan</p>
+
+        <form id="destinationSearchForm" class="hh-hero-search" role="search" novalidate>
+          <label for="destinationSearchInput" class="visually-hidden">Search destinations</label>
+          <input
+            type="search"
+            id="destinationSearchInput"
+            class="form-control hh-hero-search-input"
+            placeholder="Search destinations..."
+            autocomplete="off"
+          >
+          <button type="submit" class="btn hh-hero-search-btn">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- C. Region Filters & D. Popular Destinations -->
+    <section class="hh-destinations-section" aria-labelledby="popularDestinationsHeading">
+      <div class="container hh-destinations-container">
+        <!-- Region Filter Buttons -->
+        <div class="hh-filter-bar" role="group" aria-label="Filter destinations by region">
+          <button type="button" class="btn hh-filter-btn active" data-region="All" aria-pressed="true">
+            All
+          </button>
+          <button type="button" class="btn hh-filter-btn" data-region="Gilgit-Baltistan" aria-pressed="false">
+            Gilgit-Baltistan
+          </button>
+          <button type="button" class="btn hh-filter-btn" data-region="KPK" aria-pressed="false">
+            KPK
+          </button>
+        </div>
+
+        <!-- Section Heading -->
+        <div class="hh-section-header">
+          <h2 id="popularDestinationsHeading" class="hh-section-title">Popular Destinations</h2>
+        </div>
+
+        <!-- 2-Column Destination Cards Grid (rendered by assets/js/destinations.js) -->
+        <div id="destinationsGrid" class="row row-cols-1 row-cols-md-2 g-4"></div>
+
+        <!-- Friendly Empty State Message -->
+        <div id="emptyDestinationsMessage" class="hh-empty-state" role="status" aria-live="polite" hidden>
+          <p id="emptyMessageText" class="hh-empty-state-text mb-3">
+            No destinations matched your search.
+          </p>
+          <button type="button" id="resetFiltersBtn" class="btn hh-reset-btn">
+            Show All Destinations
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer (dynamically refreshed by assets/js/layout.js over HTTP; fallback for file:// viewing) -->
+  <div id="site-footer">
+    <footer class="hh-footer">
+      <div class="hh-footer-inner container-fluid">
+        <div class="row hh-footer-grid g-0">
+          <div class="col-12 col-lg-3 hh-footer-col hh-footer-brand-col">
+            <a
+              class="hh-footer-brand text-decoration-none d-inline-block"
+              data-hh-page="home"
+              data-hh-href="#"
+              href="#"
+              title="Home (page path pending confirmation)"
+            >
+              <img
+                src="../assets/images/logo.svg"
+                data-hh-src="assets/images/logo.svg"
+                alt="Highland Horizons mountain logo"
+                class="hh-footer-logo"
+              >
+              <span class="hh-footer-brand-title d-block">HIGHLAND<br>HORIZONS</span>
+            </a>
+            <p class="hh-footer-description mb-0">
+              Thoughtful journeys through<br>
+              the mountains of Northern Pakistan.
+            </p>
+          </div>
+
+          <div class="col-6 col-lg-3 hh-footer-col hh-footer-divided-col hh-footer-explore-col">
+            <h2 class="hh-footer-heading">EXPLORE</h2>
+            <ul class="list-unstyled hh-footer-links mb-0">
+              <li><a data-hh-page="home" data-hh-href="#" href="#">Home</a></li>
+              <li><a data-hh-page="destinations" data-hh-href="pages/destinations.html" href="destinations.html">Destinations</a></li>
+              <li><a data-hh-page="destination-details" data-hh-href="#" href="#">Destination Details</a></li>
+              <li><a data-hh-page="gallery" data-hh-href="#" href="#">Gallery</a></li>
+              <li><a data-hh-page="find-your-trip" data-hh-href="#" href="#">Find Your Trip</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-lg-3 hh-footer-col hh-footer-divided-col hh-footer-packages-col">
+            <h2 class="hh-footer-heading">PACKAGES &amp; BOOKING</h2>
+            <ul class="list-unstyled hh-footer-links mb-0">
+              <li><a data-hh-page="tour-packages" data-hh-href="#" href="#">Tour Packages</a></li>
+              <li><a data-hh-page="package-details" data-hh-href="#" href="#">Package Details</a></li>
+              <li><a data-hh-page="compare-packages" data-hh-href="#" href="#">Compare Packages</a></li>
+              <li><a data-hh-page="booking" data-hh-href="#" href="#">Booking</a></li>
+              <li><a data-hh-page="price-calculator" data-hh-href="#" href="#">Price Calculator</a></li>
+              <li><a data-hh-page="booking-confirmation" data-hh-href="#" href="#">Booking Confirmation</a></li>
+            </ul>
+          </div>
+
+          <div class="col-12 col-lg-3 hh-footer-col hh-footer-divided-col hh-footer-contact-col">
+            <h2 class="hh-footer-heading">INFORMATION &amp; CONTACT</h2>
+            <ul class="list-unstyled hh-footer-links mb-3">
+              <li><a data-hh-page="about-us" data-hh-href="#" href="#">About Us</a></li>
+              <li><a data-hh-page="contact" data-hh-href="#" href="#">Contact</a></li>
+              <li><a data-hh-page="reviews-faq" data-hh-href="#" href="#">Reviews &amp; FAQ</a></li>
+            </ul>
+
+            <ul class="list-unstyled hh-footer-contact-list mb-0">
+              <li class="hh-contact-emails-row">
+                <svg class="hh-contact-icon hh-contact-email-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect x="2.5" y="5" width="19" height="14" rx="1.5" stroke="currentColor" stroke-width="1.6" />
+                  <path d="M3 6L12 13L21 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <ul class="list-unstyled hh-contact-email-list mb-0">
+                  <li><a href="mailto:i263255@isb.nu.edu.pk" class="hh-contact-item">i263255@isb.nu.edu.pk</a></li>
+                  <li><a href="mailto:i263258@isb.nu.edu.pk" class="hh-contact-item">i263258@isb.nu.edu.pk</a></li>
+                  <li><a href="mailto:i263228@isb.nu.edu.pk" class="hh-contact-item">i263228@isb.nu.edu.pk</a></li>
+                  <li><a href="mailto:i263279@isb.nu.edu.pk" class="hh-contact-item">i263279@isb.nu.edu.pk</a></li>
+                  <li><a href="mailto:i263246@isb.nu.edu.pk" class="hh-contact-item">i263246@isb.nu.edu.pk</a></li>
+                </ul>
+              </li>
+              <li>
+                <span class="hh-contact-item">
+                  <svg class="hh-contact-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 21C12 21 18.5 14.5 18.5 9.5C18.5 5.91015 15.5899 3 12 3C8.41015 3 5.5 5.91015 5.5 9.5C5.5 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" />
+                    <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6" />
+                  </svg>
+                  <span>Islamabad, Pakistan</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="hh-footer-bottom-rule">
+
+        <p class="hh-footer-copyright mb-0">&copy; 2026 Highland Horizons</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Shared JavaScript dependencies -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/destinations.js"></script>
+</body>
+</html>
