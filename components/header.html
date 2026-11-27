@@ -1,0 +1,189 @@
+<header class="hh-header">
+  <nav class="navbar navbar-expand-lg hh-navbar" aria-label="Main navigation">
+    <div class="hh-header-inner container-fluid">
+      <!-- Brand logo + wordmark -->
+      <a
+        class="hh-brand text-decoration-none"
+        data-hh-page="home"
+        data-hh-href="#"
+        href="#"
+        title="Home (page path pending confirmation)"
+      >
+        <img
+          src="assets/images/logo.svg"
+          data-hh-src="assets/images/logo.svg"
+          alt="Highland Horizons mountain logo"
+          class="hh-header-logo"
+        >
+        <span class="hh-brand-divider d-none d-lg-block" aria-hidden="true"></span>
+        <span class="hh-brand-text">
+          <span class="hh-brand-title">HIGHLAND <span class="d-block d-lg-inline">HORIZONS</span></span>
+          <span class="hh-brand-tagline d-none d-lg-block">FIND YOUR WAY NORTH</span>
+        </span>
+      </a>
+
+      <!-- Mobile utility controls: search icon + hamburger button -->
+      <div class="hh-mobile-controls d-flex d-lg-none align-items-center">
+        <button
+          type="button"
+          class="hh-icon-btn hh-search-trigger"
+          aria-label="Toggle search"
+          aria-expanded="false"
+          aria-controls="hhSearchPanel"
+        >
+          <svg class="hh-search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="7.5" stroke="currentColor" stroke-width="1.8" />
+            <line x1="16.2" y1="16.2" x2="21.5" y2="21.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <button
+          class="navbar-toggler hh-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#hhMainNav"
+          aria-controls="hhMainNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu"
+        >
+          <svg class="hh-hamburger-icon" viewBox="0 0 24 18" fill="none" aria-hidden="true">
+            <line x1="1" y1="2" x2="23" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <line x1="1" y1="9" x2="23" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <line x1="1" y1="16" x2="23" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Collapsible navigation links + desktop actions -->
+      <div class="collapse navbar-collapse hh-nav-collapse" id="hhMainNav">
+        <ul class="navbar-nav hh-nav-list ms-lg-auto align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link hh-nav-link" data-hh-page="home" data-hh-href="#" href="#">Home</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle"
+              href="#"
+              id="hhDestinationsDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span>Destinations</span>
+              <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhDestinationsDropdown">
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="destinations" data-hh-href="#" href="#">Destinations</a></li>
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="destination-details" data-hh-href="#" href="#">Destination Details</a></li>
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="gallery" data-hh-href="#" href="#">Gallery</a></li>
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="find-your-trip" data-hh-href="#" href="#">Find Your Trip</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle"
+              href="#"
+              id="hhPackagesDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span>Tour Packages</span>
+              <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhPackagesDropdown">
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="tour-packages" data-hh-href="#" href="#">Tour Packages</a></li>
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="package-details" data-hh-href="#" href="#">Package Details</a></li>
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="compare-packages" data-hh-href="#" href="#">Compare Packages</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle"
+              href="#"
+              id="hhBookingDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span>Booking</span>
+              <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhBookingDropdown">
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="booking" data-hh-href="#" href="#">Booking</a></li>
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="price-calculator" data-hh-href="#" href="#">Price Calculator</a></li>
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="booking-confirmation" data-hh-href="#" href="#">Booking Confirmation</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle"
+              href="#"
+              id="hhMoreDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span>More</span>
+              <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg-end hh-dropdown-menu" aria-labelledby="hhMoreDropdown">
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="about-us" data-hh-href="#" href="#">About Us</a></li>
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="contact" data-hh-href="#" href="#">Contact</a></li>
+              <li><a class="dropdown-item hh-dropdown-item" data-hh-page="reviews-faq" data-hh-href="#" href="#">Reviews &amp; FAQ</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Desktop search + Sign in button (Sign in links to Login/Signup) -->
+        <div class="hh-nav-actions d-flex align-items-lg-center">
+          <button
+            type="button"
+            class="hh-icon-btn hh-search-trigger d-none d-lg-inline-flex"
+            aria-label="Toggle search"
+            aria-expanded="false"
+            aria-controls="hhSearchPanel"
+          >
+            <svg class="hh-search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="7.5" stroke="currentColor" stroke-width="1.8" />
+              <line x1="16.2" y1="16.2" x2="21.5" y2="21.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+          </button>
+
+          <a class="btn hh-signin-btn" data-hh-page="login-signup" data-hh-href="#" href="#">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Simple toggleable search bar (no backend) -->
+  <div class="hh-search-panel" id="hhSearchPanel" hidden>
+    <div class="hh-search-inner container-fluid">
+      <form class="hh-search-form" role="search" novalidate>
+        <label for="hhSearchInput" class="visually-hidden">Search Highland Horizons</label>
+        <input
+          type="search"
+          id="hhSearchInput"
+          class="form-control hh-search-input"
+          placeholder="Search destinations or tour packages..."
+          autocomplete="off"
+        >
+        <button type="submit" class="btn hh-search-submit">Search</button>
+        <button type="button" class="btn hh-search-close" aria-label="Close search">&times;</button>
+      </form>
+      <p class="hh-search-status mb-0" id="hhSearchStatus" aria-live="polite" hidden></p>
+    </div>
+  </div>
+</header>
