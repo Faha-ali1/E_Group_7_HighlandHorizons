@@ -146,8 +146,6 @@
     }
   }
 
-<<<<<<< HEAD
-=======
   function initHeaderMenu(headerContainer) {
     var navCollapse = headerContainer.querySelector("#hhMainNav");
     var toggler = headerContainer.querySelector(".hh-toggler");
@@ -187,7 +185,6 @@
     });
   }
 
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   function loadComponent(placeholderId, componentPath, basePath, onLoaded) {
     var target = document.getElementById(placeholderId);
     if (!target) {
@@ -223,10 +220,7 @@
 
     loadComponent("site-header", "components/header.html", basePath, function (headerEl) {
       highlightActiveNav(headerEl);
-<<<<<<< HEAD
-=======
       initHeaderMenu(headerEl);
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
       initHeaderSearch(headerEl);
     });
 

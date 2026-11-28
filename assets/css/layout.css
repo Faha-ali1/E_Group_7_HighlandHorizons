@@ -100,26 +100,16 @@
   margin-top: 6px;
 }
 
-<<<<<<< HEAD
-/* Mobile utility controls (search + hamburger) */
-.hh-mobile-controls {
-  gap: 26px;
-=======
 /* Utility controls (search, desktop/tablet Sign in, hamburger) */
 .hh-header-controls {
   gap: 22px;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   flex-shrink: 0;
 }
 
 .hh-icon-btn {
   background: transparent;
   border: 0;
-<<<<<<< HEAD
-  padding: 4px;
-=======
   padding: 6px;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   color: var(--hh-forest-green);
   display: inline-flex;
   align-items: center;
@@ -147,11 +137,6 @@
 
 .hh-toggler {
   border: 0;
-<<<<<<< HEAD
-  padding: 4px;
-  color: var(--hh-forest-green);
-  background: transparent;
-=======
   padding: 6px;
   color: var(--hh-forest-green);
   background: transparent;
@@ -163,7 +148,6 @@
 
 .hh-toggler:hover {
   opacity: 0.78;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
 }
 
 .hh-hamburger-icon {
@@ -172,28 +156,19 @@
   display: block;
 }
 
-<<<<<<< HEAD
-/* Collapsible navigation drawer (mobile default, including 390px and 768px) */
-.hh-nav-collapse {
-  padding-top: 12px;
-=======
 /* Collapsible navigation menu (used across mobile, tablet, and desktop) */
 .hh-nav-collapse {
   padding-top: 12px;
   padding-bottom: 16px;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   margin-top: 10px;
   border-top: 1px solid rgba(27, 94, 59, 0.18);
   max-width: 100%;
 }
 
-<<<<<<< HEAD
-=======
 .hh-nav-drawer {
   width: 100%;
 }
 
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
 .hh-nav-list {
   gap: 2px;
 }
@@ -202,12 +177,6 @@
   color: var(--hh-forest-green);
   font-size: 15px;
   font-weight: 400;
-<<<<<<< HEAD
-  padding: 9px 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-=======
   padding: 10px 4px;
   min-height: 44px;
   width: 100%;
@@ -215,7 +184,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   transition: opacity 0.15s ease;
 }
 
@@ -235,13 +203,8 @@
 }
 
 .hh-chevron-icon {
-<<<<<<< HEAD
-  width: 10px;
-  height: 7px;
-=======
   width: 11px;
   height: 8px;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
@@ -251,15 +214,6 @@
 }
 
 .hh-dropdown-menu {
-<<<<<<< HEAD
-  background-color: var(--hh-cream);
-  border: 1px solid rgba(27, 94, 59, 0.25);
-  border-radius: 6px;
-  padding: 6px 0;
-  margin-top: 4px;
-  box-shadow: 0 8px 20px rgba(27, 94, 59, 0.08);
-  max-width: calc(100vw - 40px);
-=======
   background-color: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(27, 94, 59, 0.2);
   border-radius: 6px;
@@ -267,17 +221,12 @@
   margin: 4px 0 8px;
   box-shadow: none;
   max-width: 100%;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
 }
 
 .hh-dropdown-item {
   color: var(--hh-forest-green);
   font-size: 14px;
-<<<<<<< HEAD
-  padding: 8px 16px;
-=======
   padding: 9px 16px;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   white-space: normal;
 }
 
@@ -489,8 +438,6 @@
   margin-top: 12px;
 }
 
-<<<<<<< HEAD
-=======
 .hh-contact-emails-row {
   display: flex;
   align-items: flex-start;
@@ -505,18 +452,13 @@
   margin-top: 6px;
 }
 
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
 .hh-contact-item {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   color: var(--hh-cream);
   text-decoration: none;
-<<<<<<< HEAD
-  font-size: 14px;
-=======
   font-size: 13.5px;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   line-height: 1.4;
   overflow-wrap: anywhere;
 }
@@ -571,8 +513,6 @@ a.hh-contact-item:focus-visible {
     padding: 12px 28px;
   }
 
-<<<<<<< HEAD
-=======
   .hh-header-controls {
     gap: 24px;
   }
@@ -590,7 +530,6 @@ a.hh-contact-item:focus-visible {
     margin-left: auto;
   }
 
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   .hh-footer-inner {
     padding: 36px 32px;
   }
@@ -602,13 +541,8 @@ a.hh-contact-item:focus-visible {
 
 @media (min-width: 992px) {
   .hh-header-inner {
-<<<<<<< HEAD
-    min-height: 92px;
-    padding: 0 24px;
-=======
     min-height: 98px;
     padding: 18px 36px 18px 40px;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   }
 
   .hh-brand {
@@ -616,44 +550,6 @@ a.hh-contact-item:focus-visible {
   }
 
   .hh-header-logo {
-<<<<<<< HEAD
-    height: 38px;
-  }
-
-  .hh-brand-divider {
-    height: 42px;
-    margin: 0 12px;
-  }
-
-  .hh-brand-title {
-    font-size: 15.5px;
-    line-height: 1.1;
-    letter-spacing: 0.015em;
-  }
-
-  .hh-brand-tagline {
-    font-size: 8px;
-    letter-spacing: 0.18em;
-    margin-top: 5px;
-  }
-
-  .hh-nav-collapse {
-    padding-top: 0;
-    margin-top: 0;
-    border-top: 0;
-  }
-
-  .hh-nav-list {
-    gap: 8px;
-    margin-right: 14px;
-  }
-
-  .hh-nav-link {
-    font-size: 13.25px;
-    gap: 5px;
-    padding: 8px 2px;
-    white-space: nowrap;
-=======
     height: 51px;
   }
 
@@ -709,49 +605,14 @@ a.hh-contact-item:focus-visible {
   .hh-nav-link {
     font-size: 15.5px;
     padding: 10px 6px;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   }
 
   .hh-nav-link:hover {
     opacity: 0.78;
   }
 
-<<<<<<< HEAD
-  .hh-dropdown-menu {
-    min-width: 215px;
-    max-width: none;
-  }
-
-  .hh-dropdown-item {
-    white-space: nowrap;
-  }
-
-  .hh-nav-actions {
-    margin-top: 0;
-    padding-bottom: 0;
-    gap: 18px;
-    flex-shrink: 0;
-  }
-
-  .hh-search-icon {
-    width: 21px;
-    height: 21px;
-  }
-
-  .hh-signin-btn {
-    width: auto;
-    min-width: 96px;
-    height: 44px;
-    padding: 0 18px;
-    font-size: 14.5px;
-  }
-
-  .hh-search-inner {
-    padding: 14px 24px;
-=======
   .hh-search-inner {
     padding: 14px 40px;
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   }
 
   .hh-search-form {
@@ -814,65 +675,6 @@ a.hh-contact-item:focus-visible {
    ========================================================================== */
 
 @media (min-width: 1200px) {
-<<<<<<< HEAD
-  .hh-header-inner {
-    min-height: 98px;
-    padding: 0 32px;
-  }
-
-  .hh-header-logo {
-    height: 46px;
-  }
-
-  .hh-brand-divider {
-    height: 46px;
-    margin: 0 18px;
-  }
-
-  .hh-brand-title {
-    font-size: 19px;
-    letter-spacing: 0.02em;
-  }
-
-  .hh-brand-tagline {
-    font-size: 9px;
-    letter-spacing: 0.21em;
-    margin-top: 6px;
-  }
-
-  .hh-nav-list {
-    gap: 16px;
-    margin-right: 28px;
-  }
-
-  .hh-nav-link {
-    font-size: 14.75px;
-    gap: 6px;
-    padding: 8px 3px;
-  }
-
-  .hh-nav-actions {
-    gap: 28px;
-  }
-
-  .hh-search-icon {
-    width: 23px;
-    height: 23px;
-  }
-
-  .hh-signin-btn {
-    min-width: 108px;
-    height: 48px;
-    padding: 0 22px;
-    font-size: 15px;
-  }
-
-  .hh-search-inner {
-    padding: 14px 32px;
-  }
-
-=======
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   .hh-footer-inner {
     padding: 40px 40px 36px;
   }
@@ -904,62 +706,6 @@ a.hh-contact-item:focus-visible {
 }
 
 @media (min-width: 1360px) {
-<<<<<<< HEAD
-  .hh-header-inner {
-    padding: 0 36px 0 40px;
-  }
-
-  .hh-header-logo {
-    height: 51px;
-  }
-
-  .hh-brand-divider {
-    height: 50px;
-    margin: 0 20px 0 22px;
-  }
-
-  .hh-brand-title {
-    font-size: 21px;
-  }
-
-  .hh-brand-tagline {
-    font-size: 9.5px;
-    letter-spacing: 0.24em;
-  }
-
-  .hh-nav-list {
-    gap: 22px;
-    margin-right: 40px;
-  }
-
-  .hh-nav-link {
-    font-size: 15.5px;
-    gap: 7px;
-    padding: 8px 4px;
-  }
-
-  .hh-nav-actions {
-    gap: 44px;
-  }
-
-  .hh-search-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .hh-signin-btn {
-    min-width: 115px;
-    height: 50px;
-    padding: 0 24px;
-    font-size: 16px;
-  }
-
-  .hh-search-inner {
-    padding: 14px 40px;
-  }
-
-=======
->>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   .hh-contact-item {
     font-size: 14px;
     gap: 12px;
