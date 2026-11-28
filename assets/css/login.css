@@ -1,0 +1,812 @@
+/* ==========================================================================
+   Highland Horizons — Login & Sign Up Page Styles
+   Reuses design tokens (--hh-*) from layout.css
+   Rule: Red is used strictly for error states only.
+   ========================================================================== */
+
+:root {
+  --hh-error-red: #b42318;
+  --hh-strength-amber: #b45309;
+  --hh-input-border: rgba(63, 79, 58, 0.28);
+  --hh-muted-olive: rgba(63, 79, 58, 0.78);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--hh-cream);
+  font-family: var(--hh-font-serif);
+  color: var(--hh-olive-green);
+}
+
+.hh-login-main {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 2.25rem 0 3.25rem;
+}
+
+.hh-login-container {
+  max-width: 1180px;
+}
+
+/* ==========================================================================
+   LEFT SHOWCASE CARD (Desktop >= 992px)
+   ========================================================================== */
+
+.hh-auth-showcase {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 680px;
+  background-color: var(--hh-forest-green);
+}
+
+.hh-auth-showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hh-auth-showcase-banner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+  padding: 28px 34px;
+}
+
+.hh-auth-showcase-quote {
+  font-size: 1.75rem;
+  line-height: 1.38;
+  font-weight: 400;
+  color: var(--hh-cream);
+  margin-bottom: 14px;
+}
+
+.hh-auth-showcase-sub {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--hh-cream);
+  opacity: 0.94;
+}
+
+/* ==========================================================================
+   RIGHT AUTH PANEL & TABS
+   ========================================================================== */
+
+.hh-auth-panel {
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.hh-auth-tabs {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgba(63, 79, 58, 0.2);
+  margin-bottom: 1.75rem;
+}
+
+.hh-auth-tabs::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 50%;
+  height: 2.5px;
+  background-color: var(--hh-forest-green);
+  transform: translateX(0%);
+}
+
+.hh-auth-tabs[data-active-tab="signup"]::after {
+  transform: translateX(100%);
+}
+
+.hh-auth-tab {
+  background: transparent;
+  border: 0;
+  margin-bottom: -1px;
+  padding: 0.85rem 0.5rem;
+  font-family: var(--hh-font-serif);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--hh-muted-olive);
+  cursor: pointer;
+}
+
+.hh-auth-tab:hover {
+  color: var(--hh-forest-green);
+}
+
+.hh-auth-tab:focus-visible {
+  outline: 2px solid var(--hh-forest-green);
+  outline-offset: 2px;
+  border-radius: 4px 4px 0 0;
+}
+
+.hh-auth-tab.is-active {
+  color: var(--hh-forest-green);
+  font-weight: 700;
+}
+
+.hh-auth-heading {
+  color: var(--hh-forest-green);
+  font-size: 1.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   STATUS BANNER (Success / Info — never red)
+   ========================================================================== */
+
+.hh-auth-status-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: rgba(167, 201, 87, 0.22);
+  border: 1px solid var(--hh-forest-green);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.35rem;
+  color: var(--hh-forest-green);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.hh-auth-status-banner[hidden] {
+  display: none;
+}
+
+.hh-auth-signout-btn {
+  background: transparent;
+  border: 1px solid var(--hh-forest-green);
+  border-radius: 6px;
+  color: var(--hh-forest-green);
+  font-family: var(--hh-font-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.7rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.hh-auth-signout-btn:hover,
+.hh-auth-signout-btn:focus-visible {
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+}
+
+/* ==========================================================================
+   FORM FIELDS, PASSWORD TOGGLE, STRENGTH METER
+   ========================================================================== */
+
+.hh-field-group {
+  margin-bottom: 1.25rem;
+}
+
+.hh-field-label {
+  display: block;
+  color: var(--hh-forest-green);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.hh-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 0.45rem;
+}
+
+.hh-text-action {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: var(--hh-font-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+  cursor: pointer;
+}
+
+.hh-text-action:hover,
+.hh-text-action:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hh-field-input {
+  background-color: #ffffff;
+  border: 1px solid var(--hh-input-border);
+  border-radius: 7px;
+  color: var(--hh-olive-green);
+  font-family: var(--hh-font-serif);
+  font-size: 0.95rem;
+  padding: 0.78rem 0.95rem;
+}
+
+.hh-field-input::placeholder {
+  color: rgba(63, 79, 58, 0.58);
+}
+
+.hh-field-input:focus {
+  background-color: #ffffff;
+  color: var(--hh-olive-green);
+  border-color: var(--hh-forest-green);
+  box-shadow: 0 0 0 0.2rem rgba(27, 94, 59, 0.16);
+}
+
+.hh-field-input.is-invalid-field {
+  border-color: var(--hh-error-red);
+}
+
+.hh-field-input.is-invalid-field:focus {
+  border-color: var(--hh-error-red);
+  box-shadow: 0 0 0 0.2rem rgba(180, 35, 24, 0.16);
+}
+
+.hh-password-wrap {
+  position: relative;
+}
+
+.hh-password-input {
+  padding-right: 3rem;
+}
+
+.hh-toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 0;
+  padding: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hh-forest-green);
+  cursor: pointer;
+}
+
+.hh-eye-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.hh-eye-icon[hidden] {
+  display: none;
+}
+
+.hh-toggle-password:hover {
+  opacity: 0.8;
+}
+
+.hh-toggle-password:focus-visible {
+  outline: 2px solid var(--hh-forest-green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 3-bar strength meter (Weak = red, Medium = amber, Strong = forest green) */
+.hh-strength-meter {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 0.6rem;
+}
+
+.hh-strength-bar {
+  position: relative;
+  overflow: hidden;
+  height: 3.5px;
+  border-radius: 2px;
+  background-color: rgba(63, 79, 58, 0.2);
+}
+
+.hh-strength-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background-color: transparent;
+}
+
+.hh-strength-bar.is-active::after {
+  transform: scaleX(1);
+}
+
+.hh-strength-meter[data-strength="weak"] .hh-strength-bar.is-active::after {
+  background-color: var(--hh-error-red);
+}
+
+.hh-strength-meter[data-strength="medium"] .hh-strength-bar.is-active::after {
+  background-color: var(--hh-strength-amber);
+}
+
+.hh-strength-meter[data-strength="strong"] .hh-strength-bar.is-active::after {
+  background-color: var(--hh-forest-green);
+}
+
+.hh-strength-hint {
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--hh-muted-olive);
+}
+
+.hh-strength-level {
+  font-weight: 700;
+}
+
+.hh-strength-hint[data-strength="weak"] .hh-strength-level {
+  color: var(--hh-error-red);
+}
+
+.hh-strength-hint[data-strength="medium"] .hh-strength-level {
+  color: var(--hh-strength-amber);
+}
+
+.hh-strength-hint[data-strength="strong"] .hh-strength-level {
+  color: var(--hh-forest-green);
+}
+
+/* Error text — ONLY place red appears */
+.hh-field-error {
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--hh-error-red);
+}
+
+/* Terms checkbox */
+.hh-terms-group {
+  margin-top: 0.25rem;
+  margin-bottom: 1.4rem;
+}
+
+.hh-terms-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding-left: 0;
+}
+
+.hh-terms-input {
+  float: none;
+  margin-left: 0;
+  margin-top: 0.18rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  border: 1.5px solid var(--hh-input-border);
+  border-radius: 4px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.hh-terms-input:checked {
+  background-color: var(--hh-forest-green);
+  border-color: var(--hh-forest-green);
+}
+
+.hh-terms-input:focus {
+  border-color: var(--hh-forest-green);
+  box-shadow: 0 0 0 0.2rem rgba(27, 94, 59, 0.16);
+}
+
+.hh-terms-input.is-invalid-field {
+  border-color: var(--hh-error-red);
+}
+
+.hh-terms-label {
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--hh-muted-olive);
+  cursor: pointer;
+}
+
+.hh-inline-modal-trigger {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: var(--hh-font-serif);
+  font-size: inherit;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.hh-inline-modal-trigger:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   TERMS & PRIVACY MODALS
+   ========================================================================== */
+
+.hh-modal-content {
+  background-color: var(--hh-cream);
+  border: 1.5px solid var(--hh-forest-green);
+  border-radius: 10px;
+  color: var(--hh-olive-green);
+  font-family: var(--hh-font-serif);
+}
+
+.hh-modal-header {
+  border-bottom: 1px solid rgba(27, 94, 59, 0.2);
+  padding: 1.1rem 1.35rem;
+}
+
+.hh-modal-title {
+  color: var(--hh-forest-green);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.hh-modal-body {
+  padding: 1.2rem 1.35rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.hh-modal-list {
+  padding-left: 1.15rem;
+}
+
+.hh-modal-list li + li {
+  margin-top: 0.65rem;
+}
+
+.hh-modal-footer {
+  border-top: 1px solid rgba(27, 94, 59, 0.2);
+  padding: 0.9rem 1.35rem;
+}
+
+.hh-modal-close-btn {
+  background-color: var(--hh-forest-green);
+  border: 1px solid var(--hh-forest-green);
+  border-radius: 6px;
+  color: var(--hh-cream);
+  font-family: var(--hh-font-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.48rem 1.15rem;
+}
+
+.hh-modal-close-btn:hover,
+.hh-modal-close-btn:focus-visible {
+  background-color: #14492d;
+  border-color: #14492d;
+  color: var(--hh-cream);
+}
+
+/* Forgot password inline helper */
+.hh-forgot-panel {
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(27, 94, 59, 0.25);
+  border-radius: 7px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.hh-forgot-note {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--hh-olive-green);
+}
+
+.hh-forgot-submit {
+  background-color: transparent;
+  border: 1px solid var(--hh-forest-green);
+  border-radius: 6px;
+  color: var(--hh-forest-green);
+  font-family: var(--hh-font-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.42rem 0.85rem;
+  cursor: pointer;
+}
+
+.hh-forgot-submit:hover,
+.hh-forgot-submit:focus-visible {
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+}
+
+/* Submit button */
+.hh-submit-btn {
+  width: 100%;
+  background-color: var(--hh-forest-green);
+  border: 1px solid var(--hh-forest-green);
+  border-radius: 7px;
+  color: var(--hh-cream);
+  font-family: var(--hh-font-serif);
+  font-size: 0.98rem;
+  font-weight: 700;
+  padding: 0.85rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.hh-btn-arrow {
+  display: inline-block;
+}
+
+.hh-submit-btn:hover,
+.hh-submit-btn:focus-visible {
+  background-color: #14492d;
+  border-color: #14492d;
+  color: var(--hh-cream);
+}
+
+.hh-auth-switch {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--hh-muted-olive);
+}
+
+.hh-switch-link {
+  background: transparent;
+  border: 0;
+  padding: 0 0 0 0.2rem;
+  font-family: var(--hh-font-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+  cursor: pointer;
+}
+
+.hh-switch-link:hover,
+.hh-switch-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ==========================================================================
+   VISIBLE FOCUS OUTLINES & HEADER USER GREETING
+   ========================================================================== */
+
+.hh-field-input:focus-visible,
+.hh-terms-input:focus-visible,
+.hh-auth-tab:focus-visible,
+.hh-submit-btn:focus-visible,
+.hh-toggle-password:focus-visible,
+.hh-text-action:focus-visible,
+.hh-switch-link:focus-visible,
+.hh-forgot-submit:focus-visible,
+.hh-auth-signout-btn:focus-visible,
+.hh-header-logout:focus-visible,
+.hh-inline-modal-trigger:focus-visible,
+.hh-modal-close-btn:focus-visible,
+.hh-modal-x:focus-visible {
+  outline: 2.5px solid var(--hh-forest-green);
+  outline-offset: 2px;
+}
+
+.hh-field-input.is-invalid-field:focus-visible,
+.hh-terms-input.is-invalid-field:focus-visible {
+  outline: 2.5px solid var(--hh-error-red);
+  outline-offset: 2px;
+}
+
+.hh-header-user {
+  align-items: center;
+  gap: 10px;
+  font-family: var(--hh-font-serif);
+  font-size: 0.9rem;
+  color: var(--hh-forest-green);
+}
+
+.hh-header-greeting {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hh-header-logout {
+  background: transparent;
+  border: 1px solid var(--hh-forest-green);
+  border-radius: 6px;
+  color: var(--hh-forest-green);
+  font-family: var(--hh-font-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hh-header-logout:hover {
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+}
+
+/* ==========================================================================
+   RESPONSIVE REFINEMENTS (390px Mobile Target)
+   ========================================================================== */
+
+@media (max-width: 575.98px) {
+  .hh-login-main {
+    padding: 1.5rem 0.75rem 2.5rem;
+    align-items: flex-start;
+  }
+
+  .hh-auth-panel {
+    width: 100%;
+  }
+
+  .hh-auth-heading {
+    font-size: 1.75rem;
+  }
+
+  .hh-nav-actions .hh-header-user {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .hh-login-main {
+    padding: 3rem 0 4rem;
+  }
+}
+
+/* ==========================================================================
+   SUBTLE ANIMATIONS (disabled when prefers-reduced-motion: reduce)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes hhRiseFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hhPanelFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hhErrorFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-3px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hhFieldShake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    20%,
+    60% {
+      transform: translateX(-5px);
+    }
+    40%,
+    80% {
+      transform: translateX(5px);
+    }
+  }
+
+  @keyframes hhBannerFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* 1. Page load: showcase card & form panel fade + slight slide up */
+  .hh-auth-showcase {
+    animation: hhRiseFadeIn 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hh-auth-panel {
+    animation: hhRiseFadeIn 400ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
+  }
+
+  /* 2. Tab underline slide & panel fade-in */
+  .hh-auth-tabs::after {
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hh-auth-tab {
+    transition: color 180ms ease;
+  }
+
+  .hh-auth-tabpanel:not([hidden]) {
+    animation: hhPanelFadeIn 260ms ease-out both;
+  }
+
+  /* 3. Inputs focus transition, error fade-in, submit shake */
+  .hh-field-input {
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .hh-field-error:not([hidden]) {
+    animation: hhErrorFadeIn 220ms ease-out both;
+  }
+
+  .is-shaking {
+    animation: hhFieldShake 320ms ease-in-out;
+  }
+
+  /* 4. Strength meter bars width & colour transition */
+  .hh-strength-bar::after {
+    transition: transform 260ms ease, background-color 260ms ease;
+  }
+
+  /* 5. Buttons lift/shadow & arrow slide on hover */
+  .hh-submit-btn,
+  .hh-forgot-submit,
+  .hh-header-logout,
+  .hh-modal-close-btn {
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .hh-submit-btn:hover,
+  .hh-forgot-submit:hover,
+  .hh-header-logout:hover,
+  .hh-modal-close-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(27, 94, 59, 0.2);
+  }
+
+  .hh-btn-arrow {
+    transition: transform 180ms ease;
+  }
+
+  .hh-submit-btn:hover .hh-btn-arrow {
+    transform: translateX(4px);
+  }
+
+  /* 6. Success banner fade-in */
+  .hh-auth-status-banner:not([hidden]) {
+    animation: hhBannerFadeIn 280ms ease-out both;
+  }
+}

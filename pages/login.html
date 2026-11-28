@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login &amp; Sign Up — Highland Horizons</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+<body data-base-path=".." data-hh-active-page="login-signup">
+  <!-- Shared Header Placeholder -->
+  <div id="site-header"></div>
+
+  <main class="hh-login-main">
+    <div class="container hh-login-container">
+      <div class="row align-items-center justify-content-center g-lg-5">
+        <!-- Left Visual Card (Desktop) -->
+        <div class="col-lg-6 d-none d-lg-block">
+          <figure class="hh-auth-showcase mb-0">
+            <img
+              src="../assets/images/login-hunza-valley.jpg"
+              alt="Snow-capped mountain peaks rising above terraced green fields and stone villages in Hunza Valley, Northern Pakistan"
+              class="hh-auth-showcase-img"
+            >
+            <figcaption class="hh-auth-showcase-banner">
+              <p class="hh-auth-showcase-quote">
+                A little further.<br>
+                A little more extraordinary.
+              </p>
+              <p class="hh-auth-showcase-sub mb-0">
+                Find your way to the mountains of Northern Pakistan.
+              </p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Right Auth Form Column -->
+        <div class="col-12 col-md-8 col-lg-6">
+          <section class="hh-auth-panel" aria-label="Account authentication">
+            <!-- Keyboard-accessible Tab Bar -->
+            <div class="hh-auth-tabs" data-active-tab="signup" role="tablist" aria-label="Authentication mode">
+              <button
+                type="button"
+                class="hh-auth-tab"
+                id="tab-login"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-login"
+                tabindex="-1"
+              >
+                Login
+              </button>
+              <button
+                type="button"
+                class="hh-auth-tab is-active"
+                id="tab-signup"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-signup"
+                tabindex="0"
+              >
+                Sign up
+              </button>
+            </div>
+
+            <!-- Session / Auth Status Banner (shown on successful login/signup/reset) -->
+            <div
+              id="authStatusBanner"
+              class="hh-auth-status-banner"
+              role="status"
+              aria-live="polite"
+              hidden
+            >
+              <p id="authStatusMessage" class="mb-0"></p>
+              <button
+                type="button"
+                id="authSignOutBtn"
+                class="hh-auth-signout-btn"
+                hidden
+              >
+                Sign out
+              </button>
+            </div>
+
+            <!-- LOGIN PANEL -->
+            <div
+              id="panel-login"
+              class="hh-auth-tabpanel"
+              role="tabpanel"
+              aria-labelledby="tab-login"
+              hidden
+            >
+              <h1 class="hh-auth-heading">Welcome back</h1>
+
+              <form id="loginForm" class="hh-auth-form" novalidate>
+                <div class="hh-field-group">
+                  <label for="loginEmail" class="form-label hh-field-label">Email address</label>
+                  <input
+                    type="email"
+                    id="loginEmail"
+                    name="email"
+                    class="form-control hh-field-input"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    aria-describedby="loginEmailError"
+                    aria-invalid="false"
+                    required
+                  >
+                  <p id="loginEmailError" class="hh-field-error" role="alert" aria-live="polite" hidden></p>
+                </div>
+
+                <div class="hh-field-group">
+                  <div class="hh-label-row">
+                    <label for="loginPassword" class="form-label hh-field-label mb-0">Password</label>
+                    <button
+                      type="button"
+                      id="forgotPasswordBtn"
+                      class="hh-text-action"
+                    >
+                      Forgot password?
+                    </button>
+                  </div>
+                  <div class="hh-password-wrap">
+                    <input
+                      type="password"
+                      id="loginPassword"
+                      name="password"
+                      class="form-control hh-field-input hh-password-input"
+                      placeholder="Enter your password"
+                      autocomplete="current-password"
+                      aria-describedby="loginPasswordError"
+                      aria-invalid="false"
+                      required
+                    >
+                    <button
+                      type="button"
+                      class="hh-toggle-password"
+                      data-target="loginPassword"
+                      aria-label="Show password"
+                      aria-pressed="false"
+                    >
+                      <svg class="hh-eye-icon hh-eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                      <svg class="hh-eye-icon hh-eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+                        <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.77 21.77 0 0 1 5.06-5.94" />
+                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 7 11 7a21.8 21.8 0 0 1-2.16 3.19" />
+                        <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                        <line x1="1" y1="1" x2="23" y2="23" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p id="loginPasswordError" class="hh-field-error" role="alert" aria-live="polite" hidden></p>
+                </div>
+
+                <div id="forgotPasswordPanel" class="hh-forgot-panel" hidden>
+                  <p class="hh-forgot-note mb-2">
+                    Enter your email address above and click Send reset link to simulate a password reset.
+                  </p>
+                  <button type="button" id="sendResetBtn" class="hh-forgot-submit">
+                    Send reset link
+                  </button>
+                </div>
+
+                <button type="submit" class="btn hh-submit-btn">
+                  <span>Log in</span>
+                  <span class="hh-btn-arrow" aria-hidden="true">&rarr;</span>
+                </button>
+              </form>
+
+              <p class="hh-auth-switch mb-0">
+                Don&rsquo;t have an account?
+                <button type="button" class="hh-switch-link" data-switch-tab="tab-signup">
+                  Sign up
+                </button>
+              </p>
+            </div>
+
+            <!-- SIGN UP PANEL -->
+            <div
+              id="panel-signup"
+              class="hh-auth-tabpanel"
+              role="tabpanel"
+              aria-labelledby="tab-signup"
+            >
+              <h1 class="hh-auth-heading">Create your account</h1>
+
+              <form id="signupForm" class="hh-auth-form" novalidate>
+                <div class="hh-field-group">
+                  <label for="signupFullName" class="form-label hh-field-label">Full name</label>
+                  <input
+                    type="text"
+                    id="signupFullName"
+                    name="fullName"
+                    class="form-control hh-field-input"
+                    placeholder="Your full name"
+                    autocomplete="name"
+                    aria-describedby="signupFullNameError"
+                    aria-invalid="false"
+                    required
+                  >
+                  <p id="signupFullNameError" class="hh-field-error" role="alert" aria-live="polite" hidden></p>
+                </div>
+
+                <div class="hh-field-group">
+                  <label for="signupEmail" class="form-label hh-field-label">Email address</label>
+                  <input
+                    type="email"
+                    id="signupEmail"
+                    name="email"
+                    class="form-control hh-field-input"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    aria-describedby="signupEmailError"
+                    aria-invalid="false"
+                    required
+                  >
+                  <p id="signupEmailError" class="hh-field-error" role="alert" aria-live="polite" hidden></p>
+                </div>
+
+                <div class="hh-field-group">
+                  <label for="signupPassword" class="form-label hh-field-label">Password</label>
+                  <div class="hh-password-wrap">
+                    <input
+                      type="password"
+                      id="signupPassword"
+                      name="password"
+                      class="form-control hh-field-input hh-password-input"
+                      placeholder="Enter a password"
+                      autocomplete="new-password"
+                      aria-describedby="passwordStrengthText signupPasswordError"
+                      aria-invalid="false"
+                      required
+                    >
+                    <button
+                      type="button"
+                      class="hh-toggle-password"
+                      data-target="signupPassword"
+                      aria-label="Show password"
+                      aria-pressed="false"
+                    >
+                      <svg class="hh-eye-icon hh-eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                      <svg class="hh-eye-icon hh-eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+                        <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.77 21.77 0 0 1 5.06-5.94" />
+                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 7 11 7a21.8 21.8 0 0 1-2.16 3.19" />
+                        <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                        <line x1="1" y1="1" x2="23" y2="23" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <!-- 3-Bar Password Strength Meter -->
+                  <div
+                    id="passwordStrengthMeter"
+                    class="hh-strength-meter"
+                    data-strength="weak"
+                    aria-hidden="true"
+                  >
+                    <span class="hh-strength-bar is-active"></span>
+                    <span class="hh-strength-bar"></span>
+                    <span class="hh-strength-bar"></span>
+                  </div>
+                  <p id="passwordStrengthText" class="hh-strength-hint" data-strength="weak" aria-live="polite">
+                    <span class="hh-strength-level">Weak</span> &middot; Use 8+ characters, a number and a symbol.
+                  </p>
+                  <p id="signupPasswordError" class="hh-field-error" role="alert" aria-live="polite" hidden></p>
+                </div>
+
+                <div class="hh-field-group">
+                  <label for="signupConfirmPassword" class="form-label hh-field-label">Confirm password</label>
+                  <div class="hh-password-wrap">
+                    <input
+                      type="password"
+                      id="signupConfirmPassword"
+                      name="confirmPassword"
+                      class="form-control hh-field-input hh-password-input"
+                      placeholder="Re-enter your password"
+                      autocomplete="new-password"
+                      aria-describedby="signupConfirmError"
+                      aria-invalid="false"
+                      required
+                    >
+                    <button
+                      type="button"
+                      class="hh-toggle-password"
+                      data-target="signupConfirmPassword"
+                      aria-label="Show confirm password"
+                      aria-pressed="false"
+                    >
+                      <svg class="hh-eye-icon hh-eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                      <svg class="hh-eye-icon hh-eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+                        <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.77 21.77 0 0 1 5.06-5.94" />
+                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 7 11 7a21.8 21.8 0 0 1-2.16 3.19" />
+                        <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                        <line x1="1" y1="1" x2="23" y2="23" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p id="signupConfirmError" class="hh-field-error" role="alert" aria-live="polite" hidden></p>
+                </div>
+
+                <div class="hh-field-group hh-terms-group">
+                  <div class="form-check hh-terms-check">
+                    <input
+                      class="form-check-input hh-terms-input"
+                      type="checkbox"
+                      id="signupTerms"
+                      aria-describedby="signupTermsError"
+                      aria-invalid="false"
+                      required
+                    >
+                    <label class="form-check-label hh-terms-label" for="signupTerms">
+                      I agree to the
+                      <button
+                        type="button"
+                        class="hh-inline-modal-trigger"
+                        data-bs-toggle="modal"
+                        data-bs-target="#termsModal"
+                      >
+                        Terms &amp; Conditions
+                      </button>
+                      and
+                      <button
+                        type="button"
+                        class="hh-inline-modal-trigger"
+                        data-bs-toggle="modal"
+                        data-bs-target="#privacyModal"
+                      >
+                        Privacy Policy</button>.
+                    </label>
+                  </div>
+                  <p id="signupTermsError" class="hh-field-error" role="alert" aria-live="polite" hidden></p>
+                </div>
+
+                <button type="submit" class="btn hh-submit-btn">
+                  <span>Create account</span>
+                  <span class="hh-btn-arrow" aria-hidden="true">&rarr;</span>
+                </button>
+              </form>
+
+              <p class="hh-auth-switch mb-0">
+                Already have an account?
+                <button type="button" class="hh-switch-link" data-switch-tab="tab-login">
+                  Log in
+                </button>
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Terms & Conditions Modal -->
+  <div
+    class="modal fade"
+    id="termsModal"
+    tabindex="-1"
+    aria-labelledby="termsModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content hh-modal-content">
+        <div class="modal-header hh-modal-header">
+          <h2 class="modal-title hh-modal-title" id="termsModalLabel">Terms &amp; Conditions</h2>
+          <button
+            type="button"
+            class="btn-close hh-modal-x"
+            data-bs-dismiss="modal"
+            aria-label="Close Terms &amp; Conditions"
+          ></button>
+        </div>
+        <div class="modal-body hh-modal-body">
+          <ul class="hh-modal-list mb-0">
+            <li>
+              <strong>Bookings &amp; Deposits:</strong> Tour reservations for Hunza, Skardu, Fairy Meadows, and Swat are confirmed once your booking request and deposit are verified.
+            </li>
+            <li>
+              <strong>Cancellations &amp; Refunds:</strong> Free rescheduling or partial refunds apply up to 14 days before departure; last-minute cancellations may incur hotel and transport fees.
+            </li>
+            <li>
+              <strong>Mountain Safety &amp; Weather:</strong> Northern Pakistan routes (including Karakoram Highway and high passes) are subject to weather and road conditions; guides may adjust itineraries for safety.
+            </li>
+            <li>
+              <strong>Travel Readiness:</strong> Guests are responsible for disclosing medical conditions, carrying valid CNIC/passport documents, and following guide instructions on treks.
+            </li>
+            <li>
+              <strong>Responsible Tourism:</strong> Highland Horizons promotes Leave No Trace practices and respectful engagement with local communities.
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer hh-modal-footer">
+          <button type="button" class="btn hh-modal-close-btn" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div
+    class="modal fade"
+    id="privacyModal"
+    tabindex="-1"
+    aria-labelledby="privacyModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content hh-modal-content">
+        <div class="modal-header hh-modal-header">
+          <h2 class="modal-title hh-modal-title" id="privacyModalLabel">Privacy Policy</h2>
+          <button
+            type="button"
+            class="btn-close hh-modal-x"
+            data-bs-dismiss="modal"
+            aria-label="Close Privacy Policy"
+          ></button>
+        </div>
+        <div class="modal-body hh-modal-body">
+          <ul class="hh-modal-list mb-0">
+            <li>
+              <strong>Information We Collect:</strong> We collect your full name, email address, and trip preferences when you create an account or inquire about a tour.
+            </li>
+            <li>
+              <strong>How We Use Your Data:</strong> Your details are used solely to manage bookings, arrange regional travel permits, and send essential itinerary updates.
+            </li>
+            <li>
+              <strong>No Third-Party Selling:</strong> Highland Horizons never sells or rents your personal information to outside marketers.
+            </li>
+            <li>
+              <strong>Local Demo Storage:</strong> On this static preview site, account details are stored locally in your browser&rsquo;s <code>localStorage</code> and are not sent to a remote server.
+            </li>
+            <li>
+              <strong>Your Control:</strong> You can sign out or clear your browser storage at any time, or contact our team to update or remove your booking records.
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer hh-modal-footer">
+          <button type="button" class="btn hh-modal-close-btn" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Footer Placeholder -->
+  <div id="site-footer"></div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/login.js"></script>
+</body>
+</html>
