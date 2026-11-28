@@ -146,6 +146,48 @@
     }
   }
 
+<<<<<<< HEAD
+=======
+  function initHeaderMenu(headerContainer) {
+    var navCollapse = headerContainer.querySelector("#hhMainNav");
+    var toggler = headerContainer.querySelector(".hh-toggler");
+
+    if (!navCollapse || !toggler) {
+      return;
+    }
+
+    function hideMenu(restoreFocus) {
+      if (!navCollapse.classList.contains("show")) {
+        return;
+      }
+      if (window.bootstrap && window.bootstrap.Collapse) {
+        window.bootstrap.Collapse.getOrCreateInstance(navCollapse, { toggle: false }).hide();
+      } else {
+        navCollapse.classList.remove("show");
+        toggler.setAttribute("aria-expanded", "false");
+      }
+      if (restoreFocus) {
+        toggler.focus();
+      }
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && navCollapse.classList.contains("show")) {
+        hideMenu(true);
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (
+        navCollapse.classList.contains("show") &&
+        !headerContainer.contains(event.target)
+      ) {
+        hideMenu(false);
+      }
+    });
+  }
+
+>>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
   function loadComponent(placeholderId, componentPath, basePath, onLoaded) {
     var target = document.getElementById(placeholderId);
     if (!target) {
@@ -181,6 +223,10 @@
 
     loadComponent("site-header", "components/header.html", basePath, function (headerEl) {
       highlightActiveNav(headerEl);
+<<<<<<< HEAD
+=======
+      initHeaderMenu(headerEl);
+>>>>>>> 0e2d123dd406c13d80925a12e2f6b964255380cb
       initHeaderSearch(headerEl);
     });
 
