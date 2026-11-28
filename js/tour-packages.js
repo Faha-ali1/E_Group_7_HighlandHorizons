@@ -9,7 +9,8 @@
   // Consistent localStorage keys for integration with Package Details & Compare Packages
   const STORAGE_KEYS = {
     COMPARE_IDS: "hh_compare_packages",
-    SELECTED_DETAIL_ID: "hh_selected_package_id"
+    SELECTED_DETAIL_ID: "hh_selected_package_id",
+    SEARCH_FILTERS: "hh_package_filters"
   };
 
   const MAX_COMPARE_PACKAGES = 2;
@@ -44,7 +45,6 @@
   /**
    * Master package dataset.
    * Keep IDs and details consistent with Package Details and Compare Packages pages.
-   * Future local images can replace imageSrc, e.g. "../images/packages/hunza-valley.jpg".
    */
   const TOUR_PACKAGES = [
     {
@@ -229,9 +229,90 @@
   }
 
   /**
+   * Saves current search & filter selections to localStorage.
+   */
+  function saveFilterState() {
+    if (!dom.searchInput || !dom.destinationSelect || !dom.budgetSelect || !dom.durationSelect) {
+      return;
+    }
+    const state = {
+      search: dom.searchInput.value,
+      destination: dom.destinationSelect.value,
+      budget: dom.budgetSelect.value,
+      duration: dom.durationSelect.value
+    };
+    try {
+      window.localStorage.setItem(STORAGE_KEYS.SEARCH_FILTERS, JSON.stringify(state));
+    } catch (e) {
+      // Graceful fallback
+    }
+  }
+
+  /**
+   * Restores search & filter selections from localStorage or URL query parameters.
+   */
+  function restoreFilterState() {
+    // 1. Check URL parameters first (e.g. ?q=Hunza or ?search=Hunza)
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchFromUrl = urlParams.get("search") || urlParams.get("q");
+    const destFromUrl = urlParams.get("destination");
+    const budgetFromUrl = urlParams.get("budget");
+    const durationFromUrl = urlParams.get("duration");
+
+    let restored = false;
+
+    if (searchFromUrl !== null && dom.searchInput) {
+      dom.searchInput.value = searchFromUrl;
+      restored = true;
+    }
+    if (destFromUrl && dom.destinationSelect) {
+      dom.destinationSelect.value = destFromUrl;
+      restored = true;
+    }
+    if (budgetFromUrl && dom.budgetSelect) {
+      dom.budgetSelect.value = budgetFromUrl;
+      restored = true;
+    }
+    if (durationFromUrl && dom.durationSelect) {
+      dom.durationSelect.value = durationFromUrl;
+      restored = true;
+    }
+
+    if (restored) {
+      saveFilterState();
+      return;
+    }
+
+    // 2. Fall back to localStorage
+    try {
+      const raw = window.localStorage.getItem(STORAGE_KEYS.SEARCH_FILTERS);
+      if (raw) {
+        const state = JSON.parse(raw);
+        if (state && typeof state === "object") {
+          if (typeof state.search === "string" && dom.searchInput) {
+            dom.searchInput.value = state.search;
+          }
+          if (state.destination && dom.destinationSelect) {
+            dom.destinationSelect.value = state.destination;
+          }
+          if (state.budget && dom.budgetSelect) {
+            dom.budgetSelect.value = state.budget;
+          }
+          if (state.duration && dom.durationSelect) {
+            dom.durationSelect.value = state.duration;
+          }
+        }
+      }
+    } catch (e) {
+      // Ignore parse/read errors
+    }
+  }
+
+  /**
    * Populates the Destination filter dropdown dynamically from TOUR_PACKAGES.
    */
   function populateDestinationFilter() {
+    if (!dom.destinationSelect) return;
     const seen = {};
     TOUR_PACKAGES.forEach(function (pkg) {
       if (!seen[pkg.destination]) {
@@ -248,7 +329,7 @@
    * Checks whether a package price matches the selected budget range.
    */
   function matchesBudget(pricePkr, budgetRange) {
-    if (budgetRange === "all") {
+    if (budgetRange === "all" || !budgetRange) {
       return true;
     }
     if (budgetRange === "0-20000") {
@@ -267,7 +348,7 @@
    * Checks whether a package duration matches the selected duration range.
    */
   function matchesDuration(durationDays, durationRange) {
-    if (durationRange === "all") {
+    if (durationRange === "all" || !durationRange) {
       return true;
     }
     if (durationRange === "1-3") {
@@ -283,22 +364,50 @@
   }
 
   /**
+   * Normalizes strings by lowercasing and collapsing whitespace/punctuation.
+   */
+  function normalizeSearchText(str) {
+    return (str || "")
+      .toLowerCase()
+      .replace(/[-_]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  /**
    * Filters packages using search text and all three dropdown filters together.
    */
   function getFilteredPackages() {
-    const query = dom.searchInput.value.trim().toLowerCase();
-    const destination = dom.destinationSelect.value;
-    const budget = dom.budgetSelect.value;
-    const duration = dom.durationSelect.value;
+    const rawQuery = dom.searchInput ? dom.searchInput.value.trim() : "";
+    const query = normalizeSearchText(rawQuery);
+    const destination = dom.destinationSelect ? dom.destinationSelect.value : "all";
+    const budget = dom.budgetSelect ? dom.budgetSelect.value : "all";
+    const duration = dom.durationSelect ? dom.durationSelect.value : "all";
 
     return TOUR_PACKAGES.filter(function (pkg) {
-      const matchesSearch =
-        query === "" ||
-        pkg.name.toLowerCase().indexOf(query) !== -1 ||
-        pkg.destination.toLowerCase().indexOf(query) !== -1 ||
-        pkg.description.toLowerCase().indexOf(query) !== -1 ||
-        pkg.hotelCategory.toLowerCase().indexOf(query) !== -1 ||
-        pkg.meals.toLowerCase().indexOf(query) !== -1;
+      let matchesSearch = true;
+      if (query !== "") {
+        const searchableFields = [
+          pkg.name,
+          pkg.destination,
+          pkg.description,
+          pkg.durationLabel,
+          String(pkg.durationDays) + " days",
+          String(pkg.pricePkr),
+          formatPkr(pkg.pricePkr),
+          pkg.hotelCategory,
+          pkg.meals,
+          pkg.tourGuideLabel
+        ].map(normalizeSearchText);
+
+        // Multi-word search: all words in query must match at least one field
+        const queryTerms = query.split(" ").filter(Boolean);
+        matchesSearch = queryTerms.every(function (term) {
+          return searchableFields.some(function (field) {
+            return field.indexOf(term) !== -1;
+          });
+        });
+      }
 
       const matchesDestination =
         destination === "all" || pkg.destination === destination;
@@ -313,7 +422,7 @@
   }
 
   /**
-   * Navigates to the future Package Details page with the chosen package ID.
+   * Navigates to the Package Details page with the chosen package ID.
    */
   function handleViewDetails(packageId) {
     try {
@@ -321,6 +430,7 @@
     } catch (error) {
       // Ignore storage errors gracefully
     }
+    // Path matches repository structure (subfolder pages/)
     window.location.href = "package-details.html?id=" + encodeURIComponent(packageId);
   }
 
@@ -328,6 +438,7 @@
    * Updates the comparison feedback message and optional error styling.
    */
   function setCompareMessage(text, isError) {
+    if (!dom.compareMessage) return;
     dom.compareMessage.textContent = text;
     if (isError) {
       dom.compareMessage.classList.add("tp-compare-message--error");
@@ -418,16 +529,18 @@
    * Renders the comparison tray chips, counter, and status message.
    */
   function renderComparisonBar() {
+    if (!dom.compareChips || !dom.compareCounter || !dom.compareBar) return;
+
     dom.compareChips.innerHTML = "";
     dom.compareCounter.textContent =
       selectedCompareIds.length + " / " + MAX_COMPARE_PACKAGES + " selected";
 
     if (selectedCompareIds.length > 0) {
       dom.compareBar.classList.add("tp-compare-bar--has-items");
-      dom.clearCompareBtn.hidden = false;
+      if (dom.clearCompareBtn) dom.clearCompareBtn.hidden = false;
     } else {
       dom.compareBar.classList.remove("tp-compare-bar--has-items");
-      dom.clearCompareBtn.hidden = true;
+      if (dom.clearCompareBtn) dom.clearCompareBtn.hidden = true;
     }
 
     selectedCompareIds.forEach(function (id) {
@@ -593,21 +706,27 @@
    * Renders the filtered package cards and updates result count / empty state.
    */
   function renderPackages() {
+    if (!dom.packagesList) return;
+
     const filtered = getFilteredPackages();
     dom.packagesList.innerHTML = "";
 
     const totalCount = TOUR_PACKAGES.length;
-    dom.resultsCount.textContent =
-      "Showing " + filtered.length + " of " + totalCount + " tour packages";
+    if (dom.resultsCount) {
+      dom.resultsCount.textContent =
+        "Showing " + filtered.length + " of " + totalCount + " tour packages";
+    }
 
-    dom.searchClearBtn.hidden = dom.searchInput.value.trim() === "";
+    if (dom.searchClearBtn && dom.searchInput) {
+      dom.searchClearBtn.hidden = dom.searchInput.value.trim() === "";
+    }
 
     if (filtered.length === 0) {
-      dom.emptyState.hidden = false;
+      if (dom.emptyState) dom.emptyState.hidden = false;
       return;
     }
 
-    dom.emptyState.hidden = true;
+    if (dom.emptyState) dom.emptyState.hidden = true;
     const fragment = document.createDocumentFragment();
     filtered.forEach(function (pkg) {
       fragment.appendChild(createPackageCard(pkg));
@@ -616,37 +735,60 @@
   }
 
   /**
+   * Handler when any search or filter input changes.
+   */
+  function handleFilterChange() {
+    saveFilterState();
+    renderPackages();
+  }
+
+  /**
    * Resets search input and all dropdown filters back to defaults.
    */
   function resetAllFilters() {
-    dom.searchInput.value = "";
-    dom.destinationSelect.value = "all";
-    dom.budgetSelect.value = "all";
-    dom.durationSelect.value = "all";
+    if (dom.searchInput) dom.searchInput.value = "";
+    if (dom.destinationSelect) dom.destinationSelect.value = "all";
+    if (dom.budgetSelect) dom.budgetSelect.value = "all";
+    if (dom.durationSelect) dom.durationSelect.value = "all";
+    saveFilterState();
     renderPackages();
-    dom.searchInput.focus();
+    if (dom.searchInput) dom.searchInput.focus();
   }
 
   /**
    * Attaches all UI event listeners.
    */
   function bindEvents() {
-    dom.searchInput.addEventListener("input", renderPackages);
-    dom.searchClearBtn.addEventListener("click", function () {
-      dom.searchInput.value = "";
-      renderPackages();
-      dom.searchInput.focus();
-    });
+    if (dom.searchInput) {
+      dom.searchInput.addEventListener("input", handleFilterChange);
+      dom.searchInput.addEventListener("search", handleFilterChange);
+      dom.searchInput.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && dom.searchInput.value) {
+          dom.searchInput.value = "";
+          handleFilterChange();
+        }
+      });
+    }
 
-    dom.destinationSelect.addEventListener("change", renderPackages);
-    dom.budgetSelect.addEventListener("change", renderPackages);
-    dom.durationSelect.addEventListener("change", renderPackages);
+    if (dom.searchClearBtn) {
+      dom.searchClearBtn.addEventListener("click", function () {
+        if (dom.searchInput) {
+          dom.searchInput.value = "";
+          handleFilterChange();
+          dom.searchInput.focus();
+        }
+      });
+    }
 
-    dom.resetBtn.addEventListener("click", resetAllFilters);
-    dom.emptyResetBtn.addEventListener("click", resetAllFilters);
+    if (dom.destinationSelect) dom.destinationSelect.addEventListener("change", handleFilterChange);
+    if (dom.budgetSelect) dom.budgetSelect.addEventListener("change", handleFilterChange);
+    if (dom.durationSelect) dom.durationSelect.addEventListener("change", handleFilterChange);
 
-    dom.clearCompareBtn.addEventListener("click", clearAllCompareSelections);
-    dom.compareSubmitBtn.addEventListener("click", handleCompareNavigate);
+    if (dom.resetBtn) dom.resetBtn.addEventListener("click", resetAllFilters);
+    if (dom.emptyResetBtn) dom.emptyResetBtn.addEventListener("click", resetAllFilters);
+
+    if (dom.clearCompareBtn) dom.clearCompareBtn.addEventListener("click", clearAllCompareSelections);
+    if (dom.compareSubmitBtn) dom.compareSubmitBtn.addEventListener("click", handleCompareNavigate);
   }
 
   /**
@@ -654,11 +796,16 @@
    */
   function init() {
     populateDestinationFilter();
+    restoreFilterState();
     selectedCompareIds = loadCompareSelections();
     bindEvents();
     renderComparisonBar();
     renderPackages();
   }
 
-  document.addEventListener("DOMContentLoaded", init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();

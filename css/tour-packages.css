@@ -6,14 +6,15 @@
    ========================================================================== */
 
 :root {
-  /* Provisional Colour Palette (easily mapped to finalized shared variables later) */
-  --tp-primary-green: #2E7D5B;
-  --tp-primary-green-dark: #236146;
-  --tp-light-green: #A8E6B5;
-  --tp-light-green-tint: rgba(168, 230, 181, 0.22);
-  --tp-peach: #F4B183;
-  --tp-peach-hover: #EAA06D;
-  --tp-cream-bg: #FFFDF5;
+  /* Aligned with Highland Horizons Brand Palette */
+  --tp-primary-green: #1B5E3B;
+  --tp-primary-green-dark: #14472D;
+  --tp-sage-green: #A7C957;
+  --tp-light-green: #DCECF7;
+  --tp-light-green-tint: rgba(167, 201, 87, 0.18);
+  --tp-peach: #D9B382;
+  --tp-peach-hover: #C97B3D;
+  --tp-cream-bg: #F8F6ED;
   --tp-surface: #FFFFFF;
   --tp-text: #26332E;
   --tp-text-muted: #52635C;
@@ -21,18 +22,18 @@
   --tp-error: #B42318;
   --tp-error-bg: #FEF3F2;
 
-  /* Provisional Typography */
-  --tp-font-family: 'Poppins', sans-serif;
+  /* Typography */
+  --tp-font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Layout & Elevation Tokens */
   --tp-radius-sm: 8px;
   --tp-radius-md: 14px;
   --tp-radius-lg: 18px;
-  --tp-shadow-card: 0 4px 16px rgba(38, 51, 46, 0.08);
-  --tp-shadow-hover: 0 8px 24px rgba(46, 125, 91, 0.14);
+  --tp-shadow-card: 0 4px 16px rgba(27, 94, 59, 0.08);
+  --tp-shadow-hover: 0 8px 24px rgba(27, 94, 59, 0.16);
 }
 
-/* Scoped base styling compatible with future shared reset */
+/* Scoped base styling compatible with shared reset */
 .tp-body {
   margin: 0;
   background-color: var(--tp-cream-bg);
@@ -40,6 +41,9 @@
   font-family: var(--tp-font-family);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .tp-main,
@@ -71,11 +75,12 @@
 }
 
 .tp-main {
+  flex: 1 0 auto;
   padding: 2.25rem 1.25rem 3.5rem;
 }
 
 .tp-container {
-  max-width: 980px;
+  max-width: 1060px;
   width: 100%;
   min-width: 0;
   margin: 0 auto;
@@ -86,11 +91,12 @@
    -------------------------------------------------------------------------- */
 .tp-page-header {
   text-align: center;
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
 }
 
 .tp-page-title {
   margin: 0;
+  font-family: var(--hh-font-serif, "Libre Baskerville", Georgia, serif);
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 700;
   color: var(--tp-primary-green);
@@ -101,7 +107,7 @@
    Wide Search Bar & Horizontal Filter Controls
    -------------------------------------------------------------------------- */
 .tp-controls-section {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .tp-search-wrapper {
@@ -124,15 +130,15 @@
 
 .tp-search-input {
   width: 100%;
-  min-height: 50px;
-  padding: 0.75rem 2.75rem 0.75rem 3rem;
+  min-height: 52px;
+  padding: 0.75rem 2.75rem 0.75rem 3.1rem;
   font-family: var(--tp-font-family);
   font-size: 1rem;
   color: var(--tp-text);
   background-color: var(--tp-surface);
   border: 2px solid var(--tp-border);
   border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(38, 51, 46, 0.04);
+  box-shadow: 0 2px 8px rgba(27, 94, 59, 0.05);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -142,7 +148,8 @@
 
 .tp-search-input:focus {
   border-color: var(--tp-primary-green);
-  box-shadow: 0 4px 12px rgba(46, 125, 91, 0.12);
+  box-shadow: 0 4px 14px rgba(27, 94, 59, 0.16);
+  outline: none;
 }
 
 /* Hide browser's built-in search cancel button so our accessible clear button is consistent */
@@ -153,7 +160,7 @@
 
 .tp-search-clear {
   position: absolute;
-  right: 0.75rem;
+  right: 0.85rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -166,6 +173,7 @@
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .tp-search-clear[hidden] {
@@ -173,7 +181,8 @@
 }
 
 .tp-search-clear:hover {
-  background-color: var(--tp-light-green);
+  background-color: var(--tp-peach);
+  color: #FFFFFF;
 }
 
 .tp-filters-row {
@@ -212,6 +221,7 @@
 .tp-filter-select:hover,
 .tp-filter-select:focus {
   border-color: var(--tp-primary-green);
+  outline: none;
 }
 
 .tp-filter-actions {
@@ -261,12 +271,12 @@
   border: 1.5px solid var(--tp-border);
   border-left: 5px solid var(--tp-primary-green);
   border-radius: var(--tp-radius-md);
-  box-shadow: 0 2px 10px rgba(38, 51, 46, 0.05);
+  box-shadow: 0 2px 10px rgba(27, 94, 59, 0.05);
 }
 
 .tp-compare-bar--has-items {
   border-color: var(--tp-primary-green);
-  background-color: #F6FCF8;
+  background-color: #F4FBF6;
 }
 
 .tp-compare-info {
@@ -293,8 +303,8 @@
   padding: 0.15rem 0.6rem;
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--tp-text);
-  background-color: var(--tp-light-green);
+  color: var(--tp-primary-green-dark);
+  background-color: var(--tp-sage-green);
   border-radius: 999px;
 }
 
@@ -370,6 +380,7 @@
   border: 1.5px solid var(--tp-border);
   border-radius: var(--tp-radius-sm);
   cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .tp-compare-clear-btn[hidden] {
@@ -377,7 +388,8 @@
 }
 
 .tp-compare-clear-btn:hover {
-  border-color: var(--tp-text);
+  border-color: var(--tp-primary-green);
+  color: var(--tp-primary-green);
 }
 
 .tp-compare-submit-btn {
@@ -429,7 +441,7 @@
 .tp-card--selected {
   border: 2px solid var(--tp-primary-green);
   background-color: #F4FBF6;
-  box-shadow: 0 6px 20px rgba(46, 125, 91, 0.16);
+  box-shadow: 0 6px 20px rgba(27, 94, 59, 0.16);
 }
 
 /* Left Side: Thumbnail + Package Name, Duration, Price & Key Info */
@@ -447,7 +459,7 @@
   height: 165px;
   border-radius: var(--tp-radius-md);
   overflow: hidden;
-  background-color: var(--tp-light-green-tint);
+  background-color: var(--tp-light-green);
   border: 1px solid var(--tp-border);
 }
 
@@ -485,9 +497,9 @@
 
 .tp-card-destination {
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: var(--tp-primary-green);
 }
 
@@ -513,13 +525,13 @@
   padding: 0.22rem 0.7rem;
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--tp-text);
-  background-color: var(--tp-light-green);
+  color: var(--tp-primary-green-dark);
+  background-color: var(--tp-sage-green);
   border-radius: 999px;
 }
 
 .tp-card-price {
-  font-size: 1.12rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--tp-primary-green);
 }
@@ -534,6 +546,7 @@
   margin: 0 0 0.8rem;
   font-size: 0.92rem;
   color: var(--tp-text-muted);
+  line-height: 1.5;
 }
 
 .tp-card-specs {
@@ -555,7 +568,7 @@
   border-radius: var(--tp-radius-sm);
 }
 
-/* Right Side: Vertically Stacked Peach Buttons */
+/* Right Side: Vertically Stacked Peach / Sand Beige Buttons */
 .tp-card-actions {
   flex: 0 0 175px;
   display: flex;
@@ -584,13 +597,14 @@
 .tp-btn--peach {
   color: var(--tp-text);
   background-color: var(--tp-peach);
-  border: 1.5px solid #E29B6A;
+  border: 1.5px solid #C97B3D;
 }
 
 .tp-btn--peach:hover {
   background-color: var(--tp-peach-hover);
+  color: #FFFFFF;
   transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(244, 177, 131, 0.45);
+  box-shadow: 0 3px 10px rgba(201, 123, 61, 0.35);
 }
 
 .tp-btn--selected {
@@ -602,7 +616,7 @@
 .tp-btn--selected:hover {
   background-color: var(--tp-primary-green-dark);
   transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(46, 125, 91, 0.28);
+  box-shadow: 0 3px 10px rgba(27, 94, 59, 0.28);
 }
 
 /* --------------------------------------------------------------------------
@@ -610,7 +624,7 @@
    -------------------------------------------------------------------------- */
 .tp-empty-state {
   text-align: center;
-  padding: 2.5rem 1.5rem;
+  padding: 2.75rem 1.5rem;
   background-color: var(--tp-surface);
   border: 1.5px dashed var(--tp-border);
   border-radius: var(--tp-radius-lg);
@@ -623,6 +637,7 @@
 .tp-empty-title {
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
+  font-weight: 700;
   color: var(--tp-text);
 }
 
@@ -655,6 +670,10 @@
     flex: none;
     flex-direction: row;
     width: 100%;
+  }
+
+  .tp-card-actions .tp-btn {
+    flex: 1 1 0;
   }
 }
 

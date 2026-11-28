@@ -4,25 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Explore Highland Horizons tour packages across Northern Pakistan including Hunza, Skardu, Fairy Meadows, Swat, Naran Kaghan, and Shogran.">
-  <title>Tour Packages | Highland Horizons</title>
+  <title>Tour Packages — Highland Horizons</title>
 
-  <!-- Provisional Typography: Poppins with sans-serif fallback -->
+  <!--
+    Required shared CSS dependencies for all Highland Horizons pages:
+    1. Bootstrap 5.3 CSS (must load before layout.css)
+    2. assets/css/layout.css (automatically imports Libre Baskerville 400 & 700 and defines shared tokens)
+  -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+  <link rel="stylesheet" href="../assets/css/layout.css">
+
+  <!-- Page-specific typography and styling -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Integration Slot: Link finalized shared stylesheet here when merged -->
-  <!-- <link rel="stylesheet" href="../css/shared.css"> -->
-
-  <!-- Page-specific stylesheet -->
   <link rel="stylesheet" href="../css/tour-packages.css">
 </head>
-<body class="tp-body">
-  <!--
-    Integration Slot: Shared Header & Navbar
-    Replace or populate this container when the finalized shared header component is merged.
-  -->
-  <div id="shared-header-slot" data-shared-component="header"></div>
+<body class="tp-body" data-hh-active-page="tour-packages">
+  <!-- Shared Header Placeholder -->
+  <div id="site-header"></div>
 
   <main class="tp-main" id="tp-main-content">
     <div class="tp-container">
@@ -144,14 +149,20 @@
     </div>
   </main>
 
-  <!--
-    Integration Slot: Shared Footer
-    Replace or populate this container when the finalized shared footer component is merged.
-  -->
-  <div id="shared-footer-slot" data-shared-component="footer"></div>
+  <!-- Shared Footer Placeholder -->
+  <div id="site-footer"></div>
 
-  <!-- Integration Slot: Link finalized shared JavaScript here when merged -->
-  <!-- <script src="../js/shared.js" defer></script> -->
+  <!--
+    Required shared JavaScript dependencies for all Highland Horizons pages:
+    1. Bootstrap 5.3 Bundle JS (includes Popper for dropdowns and mobile collapse)
+    2. assets/js/layout.js (loads components/header.html and components/footer.html via fetch())
+  -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="../assets/js/layout.js"></script>
 
   <!-- Page-specific script -->
   <script src="../js/tour-packages.js" defer></script>
